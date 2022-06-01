@@ -20,7 +20,7 @@
         <%= f.input :role,
                     as: :select,
                     required: true,
-                    collection: %w[buyer, seller]%>
+                    collection: %w[buyer seller]%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
