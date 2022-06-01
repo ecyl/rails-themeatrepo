@@ -1,7 +1,24 @@
-<div class='banner-container-butcher'>
+<div class='banner-container-butcher text-center'>
   <h1><%= @butcher.name %></h1>
   <h5>Address: <%= @butcher.address %></h5>
   <h5>Contact no: <%= @butcher.phone_number %></h5>
 </div>
 
-<h2>All Products</h2>
+<h2 class="text-center">All Products</h2>
+
+
+<%# PRODUCT CARD %>
+
+<div class="card-container">
+  <img src="https://source.unsplash.com/random/388x235" alt="">
+  <div class="card-info">
+    <div>
+      <p class="card-text-large">Product Name</p>
+      <p class="card-text-small">Expiration Date</p>
+      <p class="card-text-large">Butchery Name</p>
+    </div>
+      <p class="card-text-large">$xx.xx</p>
+  </div>
+  <%= link_to "Update", '#', class: "btn-long-black mx-auto" %>
+
+</div>
