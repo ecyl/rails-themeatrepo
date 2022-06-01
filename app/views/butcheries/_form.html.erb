@@ -1,0 +1,7 @@
+<%= simple_form_for([user, butchery]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+<% end %>
