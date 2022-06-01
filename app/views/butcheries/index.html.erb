@@ -1,0 +1,10 @@
+<h1 class="text-center">Butcheries</h1>
+
+<ul>
+  <% @butcheries.each do |butchery| %>
+    <li>
+      <%= butchery.name %>, <%= butchery.address %>
+    </li>
+  <% end %>
+
+</ul>

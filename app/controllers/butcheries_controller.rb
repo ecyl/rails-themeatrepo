@@ -5,6 +5,10 @@ class ButcheriesController < ApplicationController
   # view all possible bucheries
   # view information about a butchery
 
+  def index
+    @butcheries = Butchery.all
+  end
+
   def new
     @butcher = Butchery.new
   end
