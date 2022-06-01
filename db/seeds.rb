@@ -35,7 +35,7 @@ end
 
 sellers = User.all
 
-puts "Creating butcheries..."
+puts "Creating Butcheries..."
 
 10.times do |i|
   butchery = Butchery.new(
@@ -58,7 +58,7 @@ puts "Creating butcheries..."
   end
 end
 
-puts "Creating Customers and reviews..."
+puts "Creating Customers..."
 
 10.times do
   customer = User.new(
@@ -67,19 +67,23 @@ puts "Creating Customers and reviews..."
     address: Faker::Address.street_address,
     password: Faker::Compass.quarter_wind,
     phone_number: Faker::PhoneNumber.cell_phone,
-    role: "customer"
+    role: "buyer"
   )
   customer.save
+end
 
-  10.times do
-  review = Review.new (
-    content: Faker::Restaurant.review,
-    ratings: [1..5].sample
+customers = User.where(role: "buyer")
+butcheries = Butchery.all
+
+puts "Creating Reviews..."
+
+10.times do |i|
+  review = Review.new(
+    comment: Faker::Restaurant.review,
+    rating: [1..5].sample
   )
-  end
-
-  review.user = customer
-  review.butchery = butchery
+  review.user = customers[i]
+  review.butchery = butcheries[i]
   review.save
 end
 
