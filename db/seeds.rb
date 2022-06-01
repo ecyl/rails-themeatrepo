@@ -13,26 +13,46 @@ require 'faker'
 puts "Cleaning database..."
 Product.destroy_all
 Butchery.destroy_all
+User.destroy_all
+
+names = ["Wagyu beef", "Sirloin Steak", "Chicken", "Pork"]
+country = %w[Australia US Japan]
+roles = %w[buyer user]
 
 puts "Creating butcheries..."
 10.times do
+  user = User.new(
+    email: Faker::Internet.email,
+    name: Faker::Name.name,
+    address: Faker::Address.street_address,
+    password: Faker::Compass.quarter_wind,
+    phone_number: Faker::PhoneNumber.cell_phone,
+    role: "seller")
+  user.save
+  puts "Created"
+
+  puts "Finished!"
+end
+
+users = User.all
+
+10.times do |i|
   butchery = Butchery.new(
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
-    contact_number: Faker::PhoneNumber.cell_phone
+    phone_number: Faker::PhoneNumber.cell_phone
   )
+  butchery.user = users[i]
+  butchery.save
+
   20.times do
     product = Product.new(
-      name: %w[Wagyu Beef, Sirloin Steak, Chicken, Pork],
+      name: names.sample,
       price: Faker::Number.decimal(l_digits: 2),
-      country: %w[Australia, US, Japan],
+      country: country.sample,
       expiration_date: Faker::Date.in_date_period
     )
-    butchery.products << product
+    product.butchery = butchery
+    product.save
   end
-  butchery.save
 end
-
-puts "Created"
-
-puts "Finished!"
