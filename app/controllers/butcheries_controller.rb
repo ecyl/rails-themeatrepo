@@ -14,4 +14,7 @@ class ButcheriesController < ApplicationController
 
   private
 
+  def butcher_params
+
+  end
 end
