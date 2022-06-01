@@ -6,11 +6,11 @@ class ButcheriesController < ApplicationController
   # view information about a butchery
 
   def new
-    @butcher = Butcher.new
+    @butcher = Butchery.new
   end
 
   def create
-    @butcher = Butcher.new(butcher_params)
+    @butcher = Butchery.new(butchery_params)
     # assign butcher to user
     @butcher.user = @user
 
@@ -27,14 +27,14 @@ class ButcheriesController < ApplicationController
   private
 
   def find_butcher
-    @butcher = Butcher.find(params[:id])
+    @butcher = Butchery.find(params[:id])
   end
 
   def find_user
     @user = User.find(params[:user_id])
   end
 
-  def butcher_params
-    params.require(:butcher).permit(:name, :address, :phone_number)
+  def butchery_params
+    params.require(:Butchery).permit(:name, :address, :phone_number)
   end
 end
