@@ -1,21 +1,25 @@
 class ButcheriesController < ApplicationController
   before_action :find_butcher, only: :show
-  before_action :find_user, only: [:create, :show]
+  before_action :find_user, only: [:create, :show, :new]
   # create butchery
   # view all possible bucheries
   # view information about a butchery
 
+  def index
+    @butcheries = Butchery.all
+  end
+
   def new
-    @butcher = Butchery.new
+    @butchery = Butchery.new
   end
 
   def create
-    @butcher = Butchery.new(butchery_params)
+    @butchery = Butchery.new(butchery_params)
     # assign butcher to user
-    @butcher.user = @user
+    @butchery.user = @user
 
-    if @butcher.save
-      redirect_to user_butcheries_path
+    if @butchery.save
+      redirect_to butcheries_path
     else
       render :new
     end
@@ -35,6 +39,6 @@ class ButcheriesController < ApplicationController
   end
 
   def butchery_params
-    params.require(:Butchery).permit(:name, :address, :phone_number)
+    params.require(:butchery).permit(:name, :address, :phone_number)
   end
 end

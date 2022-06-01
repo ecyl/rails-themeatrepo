@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :users do
-    resources :butcheries do
+    resources :butcheries, only: [:show, :new, :create, :edit, :update, :destroy] do
       resources :products
     end
   end
@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :products
   end
+  resources :butcheries, only: [:index]
 end
