@@ -14,27 +14,28 @@ puts "Cleaning database..."
 Product.destroy_all
 Butchery.destroy_all
 User.destroy_all
+Review.destroy_all
 
 names = ["Wagyu beef", "Sirloin Steak", "Chicken", "Pork"]
 country = %w[Australia US Japan]
-roles = %w[buyer user]
 
-puts "Creating butcheries..."
+puts "Creating Sellers..."
+
 10.times do
-  user = User.new(
+  seller = User.new(
     email: Faker::Internet.email,
     name: Faker::Name.name,
     address: Faker::Address.street_address,
     password: Faker::Compass.quarter_wind,
     phone_number: Faker::PhoneNumber.cell_phone,
-    role: "seller")
-  user.save
-  puts "Created"
-
-  puts "Finished!"
+    role: "seller"
+  )
+  seller.save
 end
 
-users = User.all
+sellers = User.all
+
+puts "Creating Butcheries..."
 
 10.times do |i|
   butchery = Butchery.new(
@@ -42,7 +43,7 @@ users = User.all
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.cell_phone
   )
-  butchery.user = users[i]
+  butchery.user = sellers[i]
   butchery.save
 
   20.times do
@@ -56,3 +57,34 @@ users = User.all
     product.save
   end
 end
+
+puts "Creating Customers..."
+
+10.times do
+  customer = User.new(
+    email: Faker::Internet.email,
+    name: Faker::Name.name,
+    address: Faker::Address.street_address,
+    password: Faker::Compass.quarter_wind,
+    phone_number: Faker::PhoneNumber.cell_phone,
+    role: "buyer"
+  )
+  customer.save
+end
+
+customers = User.where(role: "buyer")
+butcheries = Butchery.all
+
+puts "Creating Reviews..."
+
+10.times do |i|
+  review = Review.new(
+    comment: Faker::Restaurant.review,
+    rating: [1..5].sample
+  )
+  review.user = customers[i]
+  review.butchery = butcheries[i]
+  review.save
+end
+
+puts "Finished"
