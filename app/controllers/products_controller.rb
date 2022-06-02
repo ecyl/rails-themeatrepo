@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   # before_action :set_user
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   before_action :set_butchery, :set_user, except: [:index, :show]
+
   def index
     @products = Product.all
   end
