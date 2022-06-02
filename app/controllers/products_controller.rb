@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.butchery = @butchery
     if @product.save
-      redirect_to user_butchery_products_path(@user, @butchery), notice: 'Product was successfully created'
+      redirect_to user_butchery_path(@user, @butchery), notice: 'Product was successfully created'
     else
       render :new
     end
