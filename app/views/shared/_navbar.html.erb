@@ -14,7 +14,9 @@
               <% @butcheries.each do |butchery| %>
                 <li><%= link_to butchery.name, user_butchery_path(@user,butchery), class: "dropdown-item" %></li>
               <% end %>
+              <li><%= link_to "Add new store", new_user_butchery_path(@user, @butchery), class: "dropdown-item" %></li>
             </ul>
+
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
