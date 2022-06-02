@@ -39,6 +39,6 @@ class ButcheriesController < ApplicationController
   end
 
   def butchery_params
-    params.require(:butchery).permit(:name, :address, :phone_number)
+    params.require(:butchery).permit(:name, :address, :phone_number, :photo)
   end
 end
