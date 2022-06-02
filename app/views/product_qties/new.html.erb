@@ -1,0 +1,4 @@
+<%= simple_form_for([@product, @product_qty]) do |f| %>
+  <%= f.input :quantity %>
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+<% end %>

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   # find the user
-  before_action :find_product_qty, only: :show
-  before_action :find_user, only: :show
+  before_action :find_product_id, only: [:show, :create, :new]
+  before_action :find_user, only: [:show, :new, :create]
 
   # view all orders
   def index
@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 
   # create new orders
   def new
+    # @product = Product.find(params[:product_id])
     @order = Order.new
   end
 
@@ -17,9 +18,10 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     # assign order to user
     @order.user = @user
+    @order.product = @product
 
     if @order.save
-      redirect_to user_product_orders(@user)
+      redirect_to user_product_orders_path(@user, @product)
     else
       render :new
     end
@@ -31,14 +33,14 @@ class OrdersController < ApplicationController
   private
 
   def find_product_id
-    @product_qty = ProductQty.find(params[:id])
+    @product = Product.find(params[:product_id])
   end
 
   def find_user
     @user = User.find(params[:user_id])
   end
 
-  def butchery_params
-    params.require(:order).permit(:order_status)
+  def order_params
+    params.require(:order).permit(:quantity)
   end
 end
