@@ -1,12 +1,17 @@
 <div class="container mb-5">
 
   <div class="row">
+    <h1>All products</h1>
+  </div>
+
+  <div class="row">
     <% @products.each do |product| %>
       <div class="col-12 col-sm-6 col-md-4 mb-4">
         <div class="card bg-white rounded">
           <!-- Image -->
           <div class="product-image-container">
-            <%= link_to user_product_path(product.butchery.user.id, product.id), class: "text-decoration-none" do %>
+            <%= link_to products_path, class: "text-decoration-none" do %>
+
               <img src="https://source.unsplash.com/random/388x235" class="product-card-image" alt="product image">
               <div class="overlay">
                 <div class="view-product-text">View</div>

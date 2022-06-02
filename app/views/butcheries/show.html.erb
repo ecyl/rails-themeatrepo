@@ -3,17 +3,17 @@
 
 <div class="container butchery-info mb-3">
   <div class="row">
-    <strong><h1><%= @butcher.name %></h1></strong>
-    <h5><strong>Address: </strong><%= @butcher.address %></h5>
+    <strong><h1><%= @butchery.name %></h1></strong>
+    <h5><strong>Address: </strong><%= @butchery.address %></h5>
   </div>
 
   <div class="row">
     <div class="col-8">
-      <p><%= @butcher.phone_number %></p>
+      <p><%= @butchery.phone_number %></p>
     </div>
 
     <div class="d-flex col-4 justify-content-end">
-      <%= link_to 'Add product', new_user_butchery_product_path(@user, @butcher), class: "btn btn-outline-success" %>
+      <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success" %>
     </div>
   </div>
 
@@ -27,10 +27,10 @@
     <% @products.each do |product| %>
       <div class="col-12 col-sm-6 col-md-4 mb-4">
         <div class="card bg-white rounded p-4">
-          <p><strong><%= product.name %></strong></p>
-          <p><%= product.expiration_date %></p>
-          <p>$<%= product.price %></p>
-          <p><%= product.country %></p>
+          <h2><strong><%= product.name %></strong></h2>
+          <p><strong>Expiration date:</strong> <%= product.expiration_date %></p>
+          <p><strong>Price: </strong>$<%= product.price %></p>
+          <p><strong>Country of origin:</strong> <%= product.country %></p>
         </div>
       </div>
     <% end %>
