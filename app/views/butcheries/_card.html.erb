@@ -1,4 +1,4 @@
-   <div class="col-12 col-sm-6 col-md-3 mb-4">
+   <div class="col-12 col-sm-6 col-md-3 mb-4 ">
         <div class="card bg-white rounded">
           <!-- Image -->
           <div class="product-image-container">
@@ -7,7 +7,7 @@
           </div>
 
           <!-- Product info -->
-          <div class="d-flex flex-column p-4">
+          <div id="card-txtboard" class="d-flex flex-column p-4">
             <div>
               <p class="product-card-name"><strong><%= product_name %></strong></p>
               <p><em>Expiration date:</em> <%= exp_date %></p>
@@ -16,10 +16,10 @@
             <div class="d-flex flex-row justify-content-between">
               <p><strong>S$<%= price %></strong></p>
             </div>
-            <div class="d-flex justify-content-center">
+            <div id="add-to-cart" class="d-flex justify-content-center">
               <%= link_to "Add to cart", '#', class: "btn btn-dark w-100 add-to-cart-btn" %>
             </div>
           </div>
         </div>
       </div>
-      <% end %>
+    <% end %>
