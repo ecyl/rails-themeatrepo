@@ -26,7 +26,7 @@ class ButcheriesController < ApplicationController
     @butchery.user = @user
 
     if @butchery.save
-      redirect_to butcheries_path
+      redirect_to user_butchery_path(@user, @butchery)
     else
       render :new
     end
