@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_084118) do
+ActiveRecord::Schema.define(version: 2022_06_02_091943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2022_06_02_084118) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
+    t.bigint "product_id", null: false
+    t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -77,7 +79,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_084118) do
     t.string "country"
     t.date "expiration_date"
     t.bigint "butchery_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6,rfalse
     t.datetime "updated_at", precision: 6, null: false
     t.index ["butchery_id"], name: "index_products_on_butchery_id"
   end
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_084118) do
   add_foreign_key "butcheries", "users"
   add_foreign_key "favourites", "butcheries"
   add_foreign_key "favourites", "users"
+  add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "butcheries"
   add_foreign_key "reviews", "butcheries"
