@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
+  # before_action :set_user
+  before_action :set_butchery, :set_user
   def index
-    @products = Product.all
+    @products = @butchery.products
+    @butcher = Butchery.find(params[:butchery_id])
   end
 
   def show
@@ -14,9 +17,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
+    @product.butchery = @butchery
     if @product.save
-      redirect_to product_path(@product), notice: 'Product was successfully created'
+      redirect_to user_butchery_products_path(@user, @butchery), notice: 'Product was successfully created'
     else
       render :new
     end
@@ -32,6 +35,14 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def set_butchery
+    @butchery = Butchery.find(params[:butchery_id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :price, :country, :expiration_date)
