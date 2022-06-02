@@ -107,6 +107,8 @@
   </nav>
 <% else %>
   <nav class="navbar navbar-light navbar-expand-lg bg-light">
+    <% @products = Product.all %>
+    <% @butcheries = Butchery.all %>
     <div class="container-fluid">
       <%= link_to '/', class: "navbar-brand" do %>
         <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
@@ -118,20 +120,19 @@
               <strong>PRODUCTS</strong>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Beef</a></li>
-              <li><a class="dropdown-item" href="#">Pork</a></li>
-              <li><a class="dropdown-item" href="#">Chicken</a></li>
+              <% @products.each do |product| %>
+                <li><%= link_to product.name, product_path(product), class: "dropdown-item"%></li>
+              <% end %>
             </ul>
-          </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <strong>BUTCHERIES</strong>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">B1</a></li>
-              <li><a class="dropdown-item" href="#">B2</a></li>
-              <li><a class="dropdown-item" href="#">B3</a></li>
+              <% @butcheries.each do |butchery| %>
+                <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
+              <% end %>
             </ul>
           </li>
 
