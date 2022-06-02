@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_091943) do
     t.string "country"
     t.date "expiration_date"
     t.bigint "butchery_id", null: false
-    t.datetime "created_at", precision: 6,rfalse
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["butchery_id"], name: "index_products_on_butchery_id"
   end

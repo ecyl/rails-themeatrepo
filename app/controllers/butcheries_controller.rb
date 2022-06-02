@@ -16,9 +16,7 @@ class ButcheriesController < ApplicationController
 
   def show
     @products = @butcher.products
-
   end
-
 
   def create
     @butchery = Butchery.new(butchery_params)
@@ -26,7 +24,7 @@ class ButcheriesController < ApplicationController
     @butchery.user = @user
 
     if @butchery.save
-      redirect_to user_butchery_products_path(@user, @butchery)
+      redirect_to user_butchery_path(@user, @butchery)
     else
       render :new
     end
@@ -49,5 +47,4 @@ class ButcheriesController < ApplicationController
   def butchery_params
     params.require(:butchery).permit(:name, :address, :phone_number, :photo)
   end
-
 end
