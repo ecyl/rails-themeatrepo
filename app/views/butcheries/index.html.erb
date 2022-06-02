@@ -2,8 +2,10 @@
 
 <ul>
   <% @butcheries.each do |butchery| %>
+    <% user = butchery.user %>
     <li>
-      <%= butchery.name %>, <%= butchery.address %>
+      <%= link_to butchery.name, user_butchery_path(user_id: butchery, id: user), class: "text-decoration-none text-dark" %>
+      <%# <%= butchery.address %>
     </li>
   <% end %>
 

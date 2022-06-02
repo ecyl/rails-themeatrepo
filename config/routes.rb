@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    resources :products
+  end
   resources :butcheries, only: [:index]
 end
