@@ -12,9 +12,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% @butcheries.each do |butchery| %>
-                <li><%= link_to butchery.name, user_butchery_path(@user,butchery), class: "dropdown-item" %></li>
+                <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
               <% end %>
-              <li><%= link_to "Add new store", new_user_butchery_path(@user, @butchery), class: "dropdown-item" %></li>
+              <li><%= link_to "Add new store", new_butchery_path, class: "dropdown-item" %></li>
             </ul>
 
           </li>
@@ -24,7 +24,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% @butcheries.each do |butchery| %>
-                <li><%= link_to butchery.name, user_butchery_path(@user,butchery), class: "dropdown-item" %></li>
+                <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
               <% end %>
             </ul>
           </li>
