@@ -7,36 +7,21 @@
         <p class="mb-0" style="font-weight: lighter; font-size: 80%"><strong>Contact No: </strong><%= @butchery.phone_number %></p>
       </div>
     </div>
-  </div>
-
-  <div class="d-flex justify-content-end">
-    <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success mb-3" %>
-  </div>
+    <% if current_user.role == "buyer" %>
+      <div id="new-pdt-btn" class="d-flex justify-content-end">
+        <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success mb-3" %>
+      </div>
+    <% end %>
 </div>
 
-<div class="container">
-    <div class="row">
-      <% @butchery.products.each do |product| %>
-        <%= render "card", product: product, product_name: product.name, exp_date: product.expiration_date, country: product.country, price: product.price %>
-      <% end %>
-    </div>
+<hr>
+
+
+<div class="container mx-auto p-0">
+
+  <div class="row">
+    <% @butchery.products.each do |product| %>
+      <%= render "card", product: product, product_name: product.name, exp_date: product.expiration_date, country: product.country, price: product.price %>
+    <% end %>
   </div>
-
-
-
-
-<%# <div class="container mb-5"> %>
-
-  <%# <div class="row"> %>
-    <%# <% @products.each do |product| %>
-      <%# <div class="col-12 col-sm-6 col-md-4 mb-4"> %>
-        <%# <div class="card bg-white rounded p-4"> %>
-          <%# <p><strong><%= product.name</strong></p>  %>
-          <%# <p><%= product.expiration_date</p> %>
-          <%# <p>$<%= product.price</p>  %>
-          <%# <p><%= product.country</p>  %>
-        <%# </div> %>
-      <%# </div> %>
-    <%# <% end %>
-  <%# </div> %>
-<%# </div> %>
+</div>
