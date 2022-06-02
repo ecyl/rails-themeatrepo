@@ -7,7 +7,7 @@
         <p class="mb-0" style="font-weight: lighter; font-size: 80%"><strong>Contact No: </strong><%= @butchery.phone_number %></p>
       </div>
     </div>
-    <% if current_user.role == "buyer" %>
+    <% if current_user.role == "seller" %>
       <div id="new-pdt-btn" class="d-flex justify-content-end">
         <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success mb-3" %>
       </div>
