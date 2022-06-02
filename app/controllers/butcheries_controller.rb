@@ -15,12 +15,8 @@ class ButcheriesController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
-    @products = @butcher.products
-=======
     @products = @butchery.products
 
->>>>>>> 5e8b03fb3f8a5c21c9f72f68f3d162046394f2e1
   end
 
   def create
@@ -29,12 +25,8 @@ class ButcheriesController < ApplicationController
     @butchery.user_id = current_user.id
 
     if @butchery.save
-<<<<<<< HEAD
-      redirect_to user_butchery_path(@user, @butchery)
-=======
       redirect_to butchery_path(@butchery)
       # redirect_to user_butchery_products_path(@user, @butchery)
->>>>>>> 5e8b03fb3f8a5c21c9f72f68f3d162046394f2e1
     else
       render :new
     end
