@@ -1,9 +1,8 @@
 class ProductsController < ApplicationController
   # before_action :set_user
-  before_action :set_butchery, :set_user
+  before_action :set_butchery, :set_user, except: [:index, :show]
   def index
-    @products = @butchery.products
-    @butcher = Butchery.find(params[:butchery_id])
+    @products = Product.all
   end
 
   def show
