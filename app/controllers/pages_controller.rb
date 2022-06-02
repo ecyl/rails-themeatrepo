@@ -1,26 +1,20 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_user_role
   def home
-    @role = current_user.role
-    @user_id = 11
-    @user = User.find(@user_id)
+    unless current_user.nil?
+      @role = current_user.role
+      @user = User.find(current_user.id)
 
-    @butcheries = @user.butcheries if @role == 'seller'
+
+      @butcheries = @user.butcheries if @role == 'seller'
+    end
 
     # include orders when done
   end
 
-  # def show
+  def show
 
-  # end
-
-
-
-  private
-
-  def set_user_role
-    @role = current_user.role
   end
+
 
 end
