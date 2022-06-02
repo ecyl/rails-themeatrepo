@@ -1,4 +1,5 @@
-<% if @role == 'seller' %>
+<% if current_user.role == 'seller' %>
+  <% @butcheries = current_user.butcheries %>
   <nav class="navbar navbar-light navbar-expand-lg bg-light">
     <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
