@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_073303) do
+ActiveRecord::Schema.define(version: 2022_06_02_064807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "butcheries", force: :cascade do |t|
     t.string "name"
@@ -32,6 +60,24 @@ ActiveRecord::Schema.define(version: 2022_06_01_073303) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["butchery_id"], name: "index_favourites_on_butchery_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "product_qty_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "order_status", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_qty_id"], name: "index_orders_on_product_qty_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "product_qties", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_qties_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -72,9 +118,14 @@ ActiveRecord::Schema.define(version: 2022_06_01_073303) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "butcheries", "users"
   add_foreign_key "favourites", "butcheries"
   add_foreign_key "favourites", "users"
+  add_foreign_key "orders", "product_qties"
+  add_foreign_key "orders", "users"
+  add_foreign_key "product_qties", "products"
   add_foreign_key "products", "butcheries"
   add_foreign_key "reviews", "butcheries"
   add_foreign_key "reviews", "users"
