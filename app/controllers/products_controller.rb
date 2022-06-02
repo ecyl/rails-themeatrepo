@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   # before_action :set_user
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  before_action :set_butchery, :set_user, except: [:index, :show]
+  before_action :set_butchery, except: [:index, :show]
 
   def index
     @products = Product.all
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.butchery = @butchery
     if @product.save
-      redirect_to user_butchery_path(@user, @butchery), notice: 'Product was successfully created'
+      redirect_to butchery_path(@butchery), notice: 'Product was successfully created'
     else
       render :new
     end
@@ -39,10 +39,6 @@ class ProductsController < ApplicationController
 
   def set_butchery
     @butchery = Butchery.find(params[:butchery_id])
-  end
-
-  def set_user
-    @user = User.find(params[:user_id])
   end
 
   def product_params
