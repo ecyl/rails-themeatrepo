@@ -39,6 +39,6 @@ class OrdersController < ApplicationController
   end
 
   def butchery_params
-    params.require(:order).permit(:order_status)
+    params.require(:order).permit(:order_status, :quantity)
   end
 end
