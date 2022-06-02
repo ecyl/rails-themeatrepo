@@ -1,5 +1,58 @@
-<% if current_user.role == 'seller' %>
+<% if current_user.nil? %>
+  <nav class="navbar navbar-light navbar-expand-lg bg-light">
+    <% @products = Product.all %>
+    <% @butcheries = Butchery.all %>
+    <div class="container-fluid">
+      <%= link_to '/', class: "navbar-brand" do %>
+        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <% end %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <strong>PRODUCTS</strong>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% @products.each do |product| %>
+                <li><%= link_to product.name, product_path(product), class: "dropdown-item"%></li>
+              <% end %>
+            </ul>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <strong>BUTCHERIES</strong>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% @butcheries.each do |butchery| %>
+                <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
+              <% end %>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact us</a>
+          </li>
+
+        </ul>
+
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+
+        <% if user_signed_in? %>
+          <ul class="list-inline mt-3 ms-2">
+            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+<% elsif current_user.role == 'seller' %>
   <% @butcheries = current_user.butcheries %>
+  <% @orders = current_user.orders %>
+
   <nav class="navbar navbar-light navbar-expand-lg bg-light">
     <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
@@ -15,6 +68,7 @@
               <% @butcheries.each do |butchery| %>
                 <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
               <% end %>
+              <li><hr class="dropdown-divider"></li>
               <li><%= link_to "Add new store", new_butchery_path, class: "dropdown-item" %></li>
             </ul>
 
@@ -23,11 +77,18 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               My orders
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% @butcheries.each do |butchery| %>
-                <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
-              <% end %>
-            </ul>
+            <% if @orders.length.zero? %>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="dropdown-item">No orders yet</li>
+              </ul>
+            <% else %>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% @butcheries.each do |butchery| %>
+                  <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
+                <% end %>
+              </ul>
+            <% end %>
+
           </li>
         </ul>
         <form class="d-flex" role="search">
