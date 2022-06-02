@@ -1,13 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# products 20 products
-# butchery 10 butcheries
 require 'faker'
 
 puts "Cleaning database..."
@@ -15,6 +7,7 @@ Product.destroy_all
 Butchery.destroy_all
 User.destroy_all
 Review.destroy_all
+Order.destroy_all
 
 names = ["Wagyu beef", "Sirloin Steak", "Chicken", "Pork"]
 country = %w[Australia US Japan]
@@ -74,6 +67,17 @@ end
 
 customers = User.where(role: "buyer")
 butcheries = Butchery.all
+products = Product.all
+
+puts "Creating Orders...."
+10.times do |i|
+  order = Order.new(
+    quantity: 5
+  )
+  order.user = customers[i]
+  order.product = products[i]
+  order.save
+end
 
 puts "Creating Reviews..."
 
