@@ -41,6 +41,10 @@ class ProductsController < ApplicationController
     @butchery = Butchery.find(params[:butchery_id])
   end
 
+  def set_butcheries
+    @butcheries = current_user.butcheries
+  end
+
   def product_params
     params.require(:product).permit(:name, :price, :country, :expiration_date)
   end
