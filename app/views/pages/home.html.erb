@@ -2,7 +2,136 @@
 <!-- Banner -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path("beef-banner.jpg") %>)">
   <div class="container">
-    <h1>Find the best meats on the island</h1>
-    <p>The Meat Repo is an online marketplace for finding and selling meats in Singapore</p>
+
+    <div class="introductory-text">
+      <h1>Find the best meats on the island</h1>
+      <p>The Meat Repo is an online marketplace for finding and selling meats in Singapore</p>
+    </div>
+
+  <% unless user_signed_in? %>
+    <div class="user-actions">
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-success" %>
+      <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-light" %>
+    </div>
+  <% end %>
   </div>
 </div>
+
+<div class="product-container">
+  <div class="row mt-3 g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis incidunt, ad corrupti laboriosam, officiis fugiat accusantium nesciunt, quidem nobis voluptates sequi voluptatibus itaque ratione accusamus neque tempora porro reprehenderit odio.</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi animi sint magni aperiam eos iste nemo voluptatibus! Sapiente optio unde quo ullam error odit ut consequuntur necessitatibus, dignissimos qui.</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae natus nesciunt doloremque perferendis excepturi. Eos nihil nulla saepe, vero excepturi amet nesciunt harum error corrupti voluptate, qui dolor repellendus esse!</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3 g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis incidunt, ad corrupti laboriosam, officiis fugiat accusantium nesciunt, quidem nobis voluptates sequi voluptatibus itaque ratione accusamus neque tempora porro reprehenderit odio.</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi animi sint magni aperiam eos iste nemo voluptatibus! Sapiente optio unde quo ullam error odit ut consequuntur necessitatibus, dignissimos qui.</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae natus nesciunt doloremque perferendis excepturi. Eos nihil nulla saepe, vero excepturi amet nesciunt harum error corrupti voluptate, qui dolor repellendus esse!</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3 g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis incidunt, ad corrupti laboriosam, officiis fugiat accusantium nesciunt, quidem nobis voluptates sequi voluptatibus itaque ratione accusamus neque tempora porro reprehenderit odio.</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi animi sint magni aperiam eos iste nemo voluptatibus! Sapiente optio unde quo ullam error odit ut consequuntur necessitatibus, dignissimos qui.</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+
+        <div class="card-body">
+          <strong><h5 class="card-title">Beef</h5></strong>
+          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae natus nesciunt doloremque perferendis excepturi. Eos nihil nulla saepe, vero excepturi amet nesciunt harum error corrupti voluptate, qui dolor repellendus esse!</p>
+          <strong>$44.40</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= raise %>
