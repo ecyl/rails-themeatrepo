@@ -1,8 +1,48 @@
-<h1>All orders</h1>
+<%# if role is buyer %>
+<%# buyer should see products that was added, quantity, amount, checkout button %>
+<% if current_user.role == 'buyer' %>
+  <h1>My Orders</h1>
 
-<ul>
-  <% @orders.each do |order| %>
-    <li><%= order.id %></li>
-  <% end %>
+  <table>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Amount</th>
+    </tr>
 
-</ul>
+    <% @orders.each do |order| %>
+    <tr>
+        <td><%= order.product.name %></td>
+        <td><%= order.quantity %></td>
+        <% total = order.quantity * order.product.price %>
+        <td>$<%= total.to_f.round(2) %></td>
+    </tr>
+    <% end %>
+  </table>
+
+ <%# if role is seller %>
+ <% else %>
+    <h1>My Pending Orders</h1>
+  <%# seller should see the order id, customer name, address, phone number, order status %>
+    <table>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Name</th>
+      <th>Delivery Address</th>
+      <th>Order Details</th>
+      <th>Quantity</th>
+      <th>Order Status</th>
+    </tr>
+
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+          <td><%= order.user.name %></td>
+          <td><%= order.user.address %></td>
+          <td><%= order.product.name %></td>
+          <td><%= order.quantity %></td>
+          <td><%= order.order_status %></td>
+        <% end %>
+    </tr>
+  </table>
+<% end %>

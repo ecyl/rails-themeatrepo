@@ -19,7 +19,6 @@ class ButcheriesController < ApplicationController
 
   end
 
-
   def create
     @butchery = Butchery.new(butchery_params)
     # assign butcher to user
