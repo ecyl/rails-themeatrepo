@@ -51,7 +51,6 @@
   </nav>
 <% elsif current_user.role == 'seller' %>
   <% @butcheries = current_user.butcheries %>
-  <% @orders = current_user.orders %>
 
   <nav class="navbar navbar-light navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -71,25 +70,12 @@
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to "Add new store", new_butchery_path, class: "dropdown-item" %></li>
             </ul>
-
           </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              My orders
-            </a>
-            <% if @orders.length.zero? %>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li class="dropdown-item">No orders yet</li>
-              </ul>
-            <% else %>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% @butcheries.each do |butchery| %>
-                  <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
-                <% end %>
-              </ul>
-            <% end %>
-
+          <%= link_to "My Orders", orders_path, class: "nav-link dropdown-toggle", id: "navbarDropdown"%>
           </li>
+
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
