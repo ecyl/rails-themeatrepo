@@ -12,7 +12,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <strong>PRODUCTS</strong>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
               <% @products.each do |product| %>
                 <li><%= link_to product.name, product_path(product), class: "dropdown-item"%></li>
               <% end %>
@@ -22,7 +22,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <strong>BUTCHERIES</strong>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
               <% @butcheries.each do |butchery| %>
                 <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
               <% end %>
@@ -64,7 +64,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               My stores
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
               <% @butcheries.each do |butchery| %>
                 <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
               <% end %>
@@ -78,11 +78,11 @@
               My orders
             </a>
             <% if @orders.length.zero? %>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
                 <li class="dropdown-item">No orders yet</li>
               </ul>
             <% else %>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
                 <% @butcheries.each do |butchery| %>
                   <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
                 <% end %>
@@ -119,7 +119,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <strong>PRODUCTS</strong>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
               <% @products.each do |product| %>
                 <li><%= link_to product.name, product_path(product), class: "dropdown-item"%></li>
               <% end %>
@@ -129,7 +129,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <strong>BUTCHERIES</strong>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 600px; overflow: scroll;">
               <% @butcheries.each do |butchery| %>
                 <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
               <% end %>
