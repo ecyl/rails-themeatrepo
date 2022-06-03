@@ -3,23 +3,27 @@
 <% if current_user.role == 'buyer' %>
   <h1>My Orders</h1>
 
-  <table>
-    <tr>
-      <th>Product Name</th>
-      <th>Quantity</th>
-      <th>Amount</th>
-    </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
 
-    <% @orders.each do |order| %>
-    <tr>
-        <td><%= order.product.name %></td>
-        <td><%= order.quantity %></td>
-        <% total = order.quantity * order.product.price %>
-        <td>$<%= total.to_f.round(2) %></td>
-    </tr>
-    <% end %>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+          <td><%= order.product.name %></td>
+          <td><%= order.quantity %></td>
+          <% total = order.quantity * order.product.price %>
+          <td>$<%= total.to_f.round(2) %></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
-
+  <a class="btn-long-black" href="#">checkout</a>
  <%# if role is seller %>
  <% else %>
     <h1>My Pending Orders</h1>
