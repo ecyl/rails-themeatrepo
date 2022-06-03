@@ -6,7 +6,7 @@
         <div class="card bg-white rounded">
           <!-- Image -->
           <div class="product-image-container">
-            <%= link_to user_product_path(product.butchery.user.id, product.id), class: "text-decoration-none" do %>
+            <%= link_to product_path(product.id), class: "text-decoration-none" do %>
               <img src="https://source.unsplash.com/random/388x235" class="product-card-image" alt="product image">
               <div class="overlay">
                 <div class="view-product-text">View</div>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-              <%= link_to "Add to cart", '#', class: "btn btn-dark w-100 add-to-cart-btn" %>
+              <%= link_to "Add to cart", '#', class: "btn btn-long-black" %>
             </div>
           </div>
         </div>
