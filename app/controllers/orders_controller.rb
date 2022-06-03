@@ -10,8 +10,8 @@ class OrdersController < ApplicationController
       # Return all orders for products he has created
       @orders = Order.where(product: current_user.products)
     else
-      # If is a buyer
-        # Return all orders that he placed
+    # If is a buyer
+      # Return all orders that he placed
       @orders = Order.where(user: current_user)
     end
   end
