@@ -1,6 +1,6 @@
 <h1>Order form for <%= @product.name %></h1>
 
-<%= simple_form_for([@user, @product, @order]) do |f| %>
+<%= simple_form_for([@product, @order]) do |f| %>
   <%= f.input :quantity %>
   <%= f.submit "Submit", class: "btn btn-primary"%>
 <% end %>
