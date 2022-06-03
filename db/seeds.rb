@@ -19,7 +19,7 @@ puts "Creating Sellers..."
     email: Faker::Internet.email,
     name: Faker::Name.name,
     address: Faker::Address.street_address,
-    password: Faker::Compass.quarter_wind,
+    password: "12345678",
     phone_number: Faker::PhoneNumber.cell_phone,
     role: "seller"
   )
@@ -58,7 +58,7 @@ puts "Creating Customers..."
     email: Faker::Internet.email,
     name: Faker::Name.name,
     address: Faker::Address.street_address,
-    password: Faker::Compass.quarter_wind,
+    password: "12345678",
     phone_number: Faker::PhoneNumber.cell_phone,
     role: "buyer"
   )
@@ -75,6 +75,9 @@ puts "Creating Orders...."
     quantity: 5
   )
   order.user = customers[i]
+
+  order.user = sellers[i]
+
   order.product = products[i]
   order.save
 end
