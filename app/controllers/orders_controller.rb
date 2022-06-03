@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     else
       # If is a buyer
         # Return all orders that he placed
-        @orders = Order.where(user: current_user)
+      @orders = Order.where(user: current_user)
     end
   end
 
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     @order.product = @product
 
     if @order.save
-      redirect_to product_orders_path(@product)
+      redirect_to orders_path(@product)
     else
       render :new
     end
