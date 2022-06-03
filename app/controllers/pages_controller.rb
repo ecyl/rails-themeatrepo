@@ -7,8 +7,10 @@ class PagesController < ApplicationController
       @role = current_user.role
       @user = User.find(current_user.id)
       @butcheries = @user.butcheries if @role == 'seller'
+      @products = Product.all
     end
 
+    @products = Product.all
     # include orders when done
   end
 

@@ -18,119 +18,52 @@
   </div>
 </div>
 
-<div class="product-container m-4">
-  <div class="row mt-3 g-3">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
 
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis incidunt, ad corrupti laboriosam, officiis fugiat accusantium nesciunt, quidem nobis voluptates sequi voluptatibus itaque ratione accusamus neque tempora porro reprehenderit odio.</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi animi sint magni aperiam eos iste nemo voluptatibus! Sapiente optio unde quo ullam error odit ut consequuntur necessitatibus, dignissimos qui.</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae natus nesciunt doloremque perferendis excepturi. Eos nihil nulla saepe, vero excepturi amet nesciunt harum error corrupti voluptate, qui dolor repellendus esse!</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
+  <!-- 6 product cards -->
+<div class="container mb-5">
+  <div class="row my-5">
+    <div class="col-12 text-center">
+      <h2><strong>Products</strong></h2>
     </div>
   </div>
 
-  <div class="row mt-3 g-3">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
+  <div class="row">
+    <% 6.times do |i| %>
+      <div class="col-12 col-sm-6 col-md-4 mb-4">
+        <div class="card bg-white rounded">
+          <!-- Image -->
+          <div class="product-image-container">
+            <%= link_to product_path(@products[i].id), class: "text-decoration-none" do %>
+              <img src="https://source.unsplash.com/random/388x235" class="product-card-image" alt="product image">
+              <div class="overlay">
+                <div class="view-product-text">View</div>
+              </div>
+            <% end %>
+          </div>
 
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis incidunt, ad corrupti laboriosam, officiis fugiat accusantium nesciunt, quidem nobis voluptates sequi voluptatibus itaque ratione accusamus neque tempora porro reprehenderit odio.</p>
-          <strong>$44.40</strong>
+          <!-- Product info -->
+          <div class="d-flex flex-column p-4">
+            <div>
+              <p class="product-card-name"><strong><%= @products[i].name %></strong></p>
+              <p><em>Expiration date:</em> <%= @products[i].expiration_date %></p>
+              <p><em>Country of origin:</em> <%= @products[i].country %></p>
+            </div>
+
+            <div class="d-flex flex-row justify-content-between">
+              <p><strong><%= @products[i].butchery.name %></strong></p>
+              <p><strong>S$<%= @products[i].price %></strong></p>
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <%= link_to "Order now", new_product_order_path(@products[i].id), class: "btn btn-long-black" %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi animi sint magni aperiam eos iste nemo voluptatibus! Sapiente optio unde quo ullam error odit ut consequuntur necessitatibus, dignissimos qui.</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae natus nesciunt doloremque perferendis excepturi. Eos nihil nulla saepe, vero excepturi amet nesciunt harum error corrupti voluptate, qui dolor repellendus esse!</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 
-  <div class="row mt-3 g-3">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis incidunt, ad corrupti laboriosam, officiis fugiat accusantium nesciunt, quidem nobis voluptates sequi voluptatibus itaque ratione accusamus neque tempora porro reprehenderit odio.</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi animi sint magni aperiam eos iste nemo voluptatibus! Sapiente optio unde quo ullam error odit ut consequuntur necessitatibus, dignissimos qui.</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1611427873570-acd1aa6b6dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="product image" class="card-img-top">
-
-        <div class="card-body">
-          <strong><h5 class="card-title">Beef</h5></strong>
-          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae natus nesciunt doloremque perferendis excepturi. Eos nihil nulla saepe, vero excepturi amet nesciunt harum error corrupti voluptate, qui dolor repellendus esse!</p>
-          <strong>$44.40</strong>
-        </div>
-      </div>
-    </div>
+  <div class="d-flex justify-content-end">
+    <%= link_to "See all", products_path, class: "btn btn-dark" %>
   </div>
 </div>
