@@ -1,6 +1,11 @@
-<div class="container">
-  <div class="row col-6">
-    <div class="form-container">
+
+<div class="row">
+  <div class="form-container col-6 d-flex justify-content-center align-items-center flex-column">
+    <div class="form-header mb-3">
+      <strong><h1>Create a product</h1></strong>
+    </div>
+
+    <div class="form-contents">
       <%= simple_form_for([@user, @butchery, @product]) do |f| %>
         <%= f.input :name %>
         <%= f.input :price %>
@@ -8,12 +13,13 @@
         <%= f.input :expiration_date %>
         <%= f.submit "Submit", class: "btn btn-primary"%>
       <% end %>
-    </div>
 
-    <div class="col-6">
-      <img src="https://images.unsplash.com/photo-1654174344630-ef4aeb8111b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="cat">
     </div>
   </div>
 
-
+  <div class="col-6">
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1654174344630-ef4aeb8111b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="cat">
+    </div>
+  </div>
 </div>
