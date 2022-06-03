@@ -9,7 +9,7 @@
     </div>
     <% if current_user.role == "seller" %>
       <div id="new-pdt-btn" class="d-flex justify-content-end">
-        <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success mb-3" %>
+        <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-success mb-3" %>
       </div>
     <% end %>
 </div>

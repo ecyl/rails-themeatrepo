@@ -15,13 +15,11 @@
   <body>
 
     <%= render "/shared/navbar" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 mx-auto">
-          <%= yield %>
-        </div>
+
+    <p class="alert"><%= alert %></p>
+    <div class="row">
+      <div class="col-12 mt-0 mx-auto">
+        <%= yield %>
       </div>
     </div>
   </body>

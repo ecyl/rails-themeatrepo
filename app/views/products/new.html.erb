@@ -1,7 +1,12 @@
-<%= simple_form_for([@user, @butchery, @product]) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :country %>
-  <%= f.input :expiration_date %>
-  <%= f.submit "Submit", class: "btn btn-primary"%>
-<% end %>
+<div class="container">
+  <div class="row col-4">
+    <%= simple_form_for([@user, @butchery, @product]) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :price %>
+      <%= f.input :country %>
+      <%= f.input :expiration_date %>
+      <%= f.submit "Submit", class: "btn btn-primary"%>
+    <% end %>
+  </div>
+
+</div>
