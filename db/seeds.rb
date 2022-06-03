@@ -75,7 +75,9 @@ puts "Creating Orders...."
     quantity: 5
   )
   order.user = customers[i]
+
   order.user = sellers[i]
+
   order.product = products[i]
   order.save
 end

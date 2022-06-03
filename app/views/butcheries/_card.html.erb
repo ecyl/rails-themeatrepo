@@ -2,9 +2,13 @@
         <div class="card bg-white rounded">
           <!-- Image -->
           <div class="product-image-container">
-            <%= link_to '#', class: "text-decoration-none text-dark" do %>
+            <%= link_to product_path(product), class: "text-decoration-none text-dark" do %>
               <img src="https://source.unsplash.com/random/388x235" class="product-card-image" alt="product image">
+                <div class="overlay">
+                <div class="view-product-text">View</div>
+              </div>
           </div>
+            <% end %>
 
           <!-- Product info -->
           <div id="card-txtboard" class="d-flex flex-column p-4">
@@ -22,4 +26,3 @@
           </div>
         </div>
       </div>
-    <% end %>
