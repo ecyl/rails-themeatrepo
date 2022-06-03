@@ -52,7 +52,7 @@
 <% elsif current_user.role == 'seller' %>
   <% @butcheries = current_user.butcheries %>
   <% @orders = current_user.orders %>
-
+<% raise %>
   <nav class="navbar navbar-light navbar-expand-lg bg-light">
     <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
@@ -75,7 +75,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              My orders
+              My Pending Orders
             </a>
             <% if @orders.length.zero? %>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -83,9 +83,7 @@
               </ul>
             <% else %>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% @butcheries.each do |butchery| %>
-                  <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
-                <% end %>
+                <li><%= link_to "Pending Orders", product_orders_path, class: "dropdown-item" %></li>
               </ul>
             <% end %>
 
