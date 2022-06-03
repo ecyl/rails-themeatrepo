@@ -58,7 +58,7 @@ puts "Creating Customers..."
     email: Faker::Internet.email,
     name: Faker::Name.name,
     address: Faker::Address.street_address,
-    password: Faker::Compass.quarter_wind,
+    password: "12345678",
     phone_number: Faker::PhoneNumber.cell_phone,
     role: "buyer"
   )
