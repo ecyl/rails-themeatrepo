@@ -1,25 +1,44 @@
   <%# to input the basic information for the butchery %>
-<%= simple_form_for(butchery) do |f| %>
 
-  <div>
-    <h3>Basic Info</h3>
-    <%= f.input :name, label: 'Butchery Name'%>
-    <%= f.input :phone_number, label: 'Contact Number' %>
+<div class="row">
+  <div class="form-container d-flex col-6 justify-content-center align-items-center mt-4">
+    <div class="form-content flex-column">
+      <div class="form-header mb-4">
+        <div>
+          <h1><strong>Butchery Creation</strong></h1>
+        </div>
+      </div>
+
+      <%= simple_form_for(butchery) do |f| %>
+
+        <div>
+          <h3>Basic Info</h3>
+          <%= f.input :name, label: 'Butchery Name'%>
+          <%= f.input :phone_number, label: 'Contact Number' %>
+        </div>
+
+        <%# to input the address for the new butchery %>
+        <div>
+          <h3>Location</h3>
+          <%= f.input :address %>
+        </div>
+
+        <%# to input the image for the new butchery %>
+        <div>
+          <h3>Image</h3>
+          <%= f.input :photo, as: :file %>
+        </div>
+
+        <%= f.submit "Submit", class: "btn btn-primary"%>
+      <% end %>
+    </div>
   </div>
 
-  <%# to input the address for the new butchery %>
-  <div>
-    <h3>Location</h3>
-    <%= f.input :address %>
+  <div class="col-6">
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1654174344630-ef4aeb8111b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="cat">
+    </div>
   </div>
-
-  <%# to input the image for the new butchery %>
-  <div>
-    <h3>Image</h3>
-    <%= f.input :photo, as: :file %>
-  </div>
-
-  <%= f.submit "Submit", class: "btn btn-primary"%>
-<% end %>
+</div>
 
 <%# insert a back button here %>
