@@ -1,38 +1,27 @@
 
-<%# PRODUCT CARD %>
-
-<div class="container butchery-info mb-3">
-  <div class="row">
-    <strong><h1><%= @butchery.name %></h1></strong>
-    <h5><strong>Address: </strong><%= @butchery.address %></h5>
-  </div>
-
-  <div class="row">
-    <div class="col-8">
-      <p><%= @butchery.phone_number %></p>
+<div class="banner-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <div class='text-center'>
+      <p><%= @butchery.name %></p>
+      <div class="mt-3">
+        <p class="mb-0" style="font-weight: lighter; font-size: 80%"><strong>Address: </strong><%= @butchery.address %></p>
+        <p class="mb-0" style="font-weight: lighter; font-size: 80%"><strong>Contact No: </strong><%= @butchery.phone_number %></p>
+      </div>
     </div>
-
-    <div class="d-flex col-4 justify-content-end">
-      <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success" %>
-    </div>
-  </div>
-
-
+    <% if current_user.role == "seller" %>
+      <div id="new-pdt-btn" class="d-flex justify-content-end">
+        <%= link_to 'Add product', new_butchery_product_path(@butchery), class: "btn btn-outline-success mb-3" %>
+      </div>
+    <% end %>
 </div>
 
+<hr>
 
-<div class="container mb-5">
+
+<div class="container mx-auto p-0">
 
   <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-12 col-sm-6 col-md-4 mb-4">
-        <div class="card bg-white rounded p-4">
-          <h2><strong><%= product.name %></strong></h2>
-          <p><strong>Expiration date:</strong> <%= product.expiration_date %></p>
-          <p><strong>Price: </strong>$<%= product.price %></p>
-          <p><strong>Country of origin:</strong> <%= product.country %></p>
-        </div>
-      </div>
+    <% @butchery.products.each do |product| %>
+      <%= render "card", product: product, product_name: product.name, exp_date: product.expiration_date, country: product.country, price: product.price %>
     <% end %>
   </div>
 </div>
