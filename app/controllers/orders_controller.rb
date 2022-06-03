@@ -5,7 +5,15 @@ class OrdersController < ApplicationController
 
   # view all orders
   def index
-    @orders = Order.all
+    # If is the seller
+    if current_user.role == "seller"
+      # Return all orders for products he has created
+      @orders = Order.where(product: current_user.products)
+    else
+      # If is a buyer
+        # Return all orders that he placed
+        @orders = Order.where(user: current_user)
+    end
   end
 
   # create new orders
