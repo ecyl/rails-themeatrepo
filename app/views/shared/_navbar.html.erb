@@ -1,5 +1,5 @@
 <% if current_user.nil? %>
-  <nav class="navbar navbar-light navbar-expand-lg bg-light">
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <% @products = Product.all %>
     <% @butcheries = Butchery.all %>
     <div class="container-fluid">
@@ -38,7 +38,7 @@
 
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark" type="submit">Search</button>
+          <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
 
         <% if user_signed_in? %>
@@ -52,7 +52,7 @@
 <% elsif current_user.role == 'seller' %>
   <% @butcheries = current_user.butcheries %>
 
-  <nav class="navbar navbar-light navbar-expand-lg bg-light">
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "meat-repo-logo-black.png" %>
@@ -65,7 +65,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% @butcheries.each do |butchery| %>
-                <li><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></li>
+                <li><strong><%= link_to butchery.name, butchery_path(butchery), class: "dropdown-item" %></strong></li>
               <% end %>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to "Add new store", new_butchery_path, class: "dropdown-item" %></li>
@@ -92,7 +92,7 @@
     </div>
   </nav>
 <% else %>
-  <nav class="navbar navbar-light navbar-expand-lg bg-light">
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <% @products = Product.all %>
     <% @butcheries = Butchery.all %>
     <div class="container-fluid">
