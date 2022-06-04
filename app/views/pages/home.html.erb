@@ -93,7 +93,11 @@
 
 
 
-            <% if current_user.role == 'buyer' %>
+            <% if current_user.nil? %>
+              <div class="d-flex justify-content-center">
+                <%= link_to "Order", new_product_order_path(@products[i].id), class: "btn btn-medium-black" %>
+              </div>
+            <% elsif current_user.role == "buyer" %>
               <div class="d-flex justify-content-center">
                 <%= link_to "Order", new_product_order_path(@products[i].id), class: "btn btn-medium-black" %>
               </div>
