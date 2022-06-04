@@ -34,29 +34,34 @@
           <!-- Image -->
           <div class="product-image-container">
             <%= link_to product_path(@products[i].id), class: "text-decoration-none" do %>
-              <img src="https://source.unsplash.com/random/388x235" class="product-card-image" alt="product image">
+              <img src="https://source.unsplash.com/random/406x246/?butcher,<%= @products[i].name %>" class="product-card-image" alt="product image">
               <div class="overlay">
                 <div class="view-product-text">View</div>
               </div>
             <% end %>
           </div>
 
+          <%# Logic behind discount and expiration date %>
+          <% discounted_price =  (@products[i].price * (1 - (@products[i].discount_percentage / 100.00))).round(2) %>
+          <% date_difference = @products[i].expiration_date - Date.today %>
+
           <!-- Product info -->
-          <div class="d-flex flex-column p-4">
-            <div>
-              <p class="product-card-name"><strong><%= @products[i].name %></strong></p>
-              <p><em>Expiration date:</em> <%= @products[i].expiration_date %></p>
-              <p><em>Country of origin:</em> <%= @products[i].country %></p>
-            </div>
+          <div class="d-flex flex-column p-3" style="height: 240px;">
 
-            <div class="d-flex flex-row justify-content-between">
-              <p><strong><%= @products[i].butchery.name %></strong></p>
-              <p><strong>S$<%= @products[i].price %></strong></p>
-            </div>
+            <% unless date_difference < 3 %>
+              <%= render "card_info", name: @products[i].name, exp_date: @products[i].expiration_date, country: @products[i].country, butchery_name: @products[i].butchery.name, price: @products[i].price %>
+            <% else %>
+              <%= render "card_info_discount", name: @products[i].name, exp_date: @products[i].expiration_date, country: @products[i].country, butchery_name: @products[i].butchery.name, price: @products[i].price, discounted_price: discounted_price %>
+            <% end %>
 
-            <div class="d-flex justify-content-center">
-              <%= link_to "Order now", new_product_order_path(@products[i].id), class: "btn btn-long-black" %>
-            </div>
+
+
+            <% if current_user.role == 'buyer' %>
+              <div class="d-flex justify-content-center">
+                <%= link_to "Order", new_product_order_path(@products[i].id), class: "btn btn-medium-black" %>
+              </div>
+            <% end %>
+
           </div>
         </div>
       </div>

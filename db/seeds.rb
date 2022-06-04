@@ -9,8 +9,10 @@ User.destroy_all
 Review.destroy_all
 Order.destroy_all
 
-names = ["Wagyu beef", "Sirloin Steak", "Chicken", "Pork"]
-country = %w[Australia US Japan]
+names = ["Wagyu beef", "Sirloin Steak", "Chicken", \
+        "Pork", "Turkey", "Flank Steak", "Ground Beef", "Beef Shank", \
+        "Pork Belly", "Pork Rib", "Pork Tenderloin", "Bacon", "Ground Pork", "Ham", "Pork Shoulder"]
+country = %w[Australia US Japan India Argentina Canada NZ Brazil]
 
 puts "Creating Sellers..."
 
@@ -44,7 +46,8 @@ puts "Creating Butcheries..."
       name: names.sample,
       price: Faker::Number.decimal(l_digits: 2),
       country: country.sample,
-      expiration_date: Faker::Date.in_date_period
+      expiration_date: Faker::Date.between(from: Date.today, to: 12.days.from_now),
+      discount_percentage: [10, 15, 20, 25, 30, 35, 40].sample
     )
     product.butchery = butchery
     product.save

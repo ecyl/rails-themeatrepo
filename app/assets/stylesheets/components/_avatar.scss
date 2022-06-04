@@ -2,31 +2,15 @@
   width: 40px;
   border-radius: 50%;
 }
-.avatar-large {
-  width: 56px;
-  border-radius: 50%;
-}
-.avatar-bordered {
+
+.avatar-buyer-border {
+  border: 2.5px solid #ffa400;
+  margin-left: 20px;
   width: 40px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
-}
-.avatar-square {
-  width: 40px;
-  border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
 }
 
-.store-icon {
-  background-color: #fff6f1;
-  border-radius: 50%;
-  height: 80px;
-  width: 80px;
-}
-
-.store-icon i {
-  color: #fd9054;
-  font-size: 32px;
+.avatar-seller-border {
+  border: 2.5px solid #f24c00;
+  margin-left: 20px;
+  width: 40px;
 }
