@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   before_action :set_butchery, except: [:index, :show]
-  before_action :set_discounted_price, only: [:index, :show]
+  before_action :set_discounted_price, except: [:index, :show]
 
   def index
     @products = Product.all
