@@ -9,8 +9,10 @@ User.destroy_all
 Review.destroy_all
 Order.destroy_all
 
-names = ["Wagyu beef", "Sirloin Steak", "Chicken", "Pork"]
-country = %w[Australia US Japan]
+names = ["Wagyu beef", "Sirloin Steak", "Chicken", \
+        "Pork", "Turkey", "Flank Steak", "Ground Beef", "Beef Shank", \
+        "Pork Belly", "Pork Rib", "Pork Tenderloin", "Bacon", "Ground Pork", "Ham", "Pork Shoulder"]
+country = %w[Australia US Japan India Argentina Canada NZ Brazil]
 
 puts "Creating Sellers..."
 
