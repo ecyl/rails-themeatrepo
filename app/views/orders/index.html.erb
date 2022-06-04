@@ -1,18 +1,19 @@
 <%# if role is buyer %>
 <%# buyer should see products that was added, quantity, amount, checkout button %>
 <% if current_user.role == 'buyer' %>
+<%# Order Summary Table %>
 <div class="order-summary">
   <div class="order-summary-header">
     <h1 class="order-summary-title">My Orders</h1>
   </div>
-
+  <%# Order Summary Table headers %>
   <table class="table">
       <thead class="table-header">
         <tr>
           <th scope="col">Product</th>
           <th scope="col">Price</th>
           <th scope="col">Quantity</th>
-          <th scope="col">Amount</th>
+          <th scope="col" class="order-product-total">Amount</th>
         </tr>
       </thead>
 
@@ -36,18 +37,23 @@
              </div>
             </td>
 
-            <td class="order-product-price"><%= order.product.price %></td>
+            <td class="order-product-price">$<%= order.product.price %></td>
             <td class="order-quantity"><%= order.quantity %></td>
-            <% total = order.quantity * order.product.price %>
-            <td class="order-product-total">$<%= total.to_f.round(2) %></td>
+            <% @total = order.quantity * order.product.price %>
+            <td class="order-product-total">$<%= @total.to_f.round(2) %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
-    <button class="btn-black" href="#">Checkout</button>
-
+  <%# Order Summary Table footer %>
+    <div class="order-footer">
+      <div class="order-subtotal">
+        <span class="order-subtotal-title">Subtotal</span>
+        <span class="order-subtotal-price">$ <%= @total %></span>
+      </div>
+      <button class="btn-black" href="#">Checkout</button>
+    </div>
 </div>
-
 
  <%# if role is seller %>
  <% else %>
