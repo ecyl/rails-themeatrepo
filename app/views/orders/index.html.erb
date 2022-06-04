@@ -18,12 +18,28 @@
 
       <tbody>
         <% @orders.each do |order| %>
-        <tr>
-            <td><%= order.product.name %></td>
-            <td><%= order.product.price %></td>
-            <td><%= order.quantity %></td>
+        <tr class="order-summary-row">
+
+            <td class="order-product">
+             <div class="product-information">
+              <div class="product-image">
+                <img src="" alt="">
+              </div>
+              <div>
+                <div class="product-name">
+                  <%= order.product.name %>
+                </div>
+                <div class="butchery-name">
+                  <%= order.product.butchery.name %>
+                </div>
+              </div>
+             </div>
+            </td>
+
+            <td class="order-product-price"><%= order.product.price %></td>
+            <td class="order-quantity"><%= order.quantity %></td>
             <% total = order.quantity * order.product.price %>
-            <td>$<%= total.to_f.round(2) %></td>
+            <td class="order-product-total">$<%= total.to_f.round(2) %></td>
         </tr>
         <% end %>
       </tbody>
