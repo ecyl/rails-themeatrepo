@@ -7,37 +7,74 @@
 
   <div class="row">
     <% @products.each do |product| %>
-      <div class="col-12 col-sm-6 col-md-4 mb-4">
-        <div class="card bg-white rounded">
-          <!-- Image -->
-          <div class="product-image-container">
-            <%= link_to product_path(product.id), class: "text-decoration-none" do %>
-              <img src="https://source.unsplash.com/random/406x246/?butcher,<%= product.name %>" class="product-card-image" alt="product image">
-              <div class="overlay">
-                <div class="view-product-text">View</div>
+
+
+      <% if @on_discount %>
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="card bg-white rounded">
+            <!-- Image -->
+            <div class="product-image-container">
+              <%= link_to product_path(product.id), class: "text-decoration-none" do %>
+                <img src="https://source.unsplash.com/random/406x246/?butcher,<%= product.name %>" class="product-card-image" alt="product image">
+                <div class="overlay">
+                  <div class="view-product-text">View</div>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- Product info -->
+            <div class="d-flex flex-column p-4">
+              <div>
+                <p class="product-card-name"><strong><%= product.name %></strong></p>
+                <p><em>Expiration date:</em> <%= product.expiration_date %></p>
+                <p><em>Country of origin:</em> <%= product.country %></p>
               </div>
-            <% end %>
-          </div>
 
-          <!-- Product info -->
-          <div class="d-flex flex-column p-4">
-            <div>
-              <p class="product-card-name"><strong><%= product.name %></strong></p>
-              <p><em>Expiration date:</em> <%= product.expiration_date %></p>
-              <p><em>Country of origin:</em> <%= product.country %></p>
-            </div>
+              <div class="d-flex flex-row justify-content-between">
+                <p><strong><%= product.butchery.name %></strong></p>
+                <p><strong>S$<%= product.price %></strong></p>
+              </div>
 
-            <div class="d-flex flex-row justify-content-between">
-              <p><strong><%= product.butchery.name %></strong></p>
-              <p><strong>S$<%= product.price %></strong></p>
-            </div>
-
-            <div class="d-flex justify-content-center">
-              <%= link_to "Order now", new_product_order_path(product), class: "btn btn-long-black" %>
+              <div class="d-flex justify-content-center">
+                <%= link_to "Order now", new_product_order_path(product), class: "btn btn-long-black" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% else %>
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="card bg-white rounded">
+            <!-- Image -->
+            <div class="product-image-container">
+              <%= link_to product_path(product.id), class: "text-decoration-none" do %>
+                <img src="https://source.unsplash.com/random/406x246/?butcher,<%= product.name %>" class="product-card-image" alt="product image">
+                <div class="overlay">
+                  <div class="view-product-text">View</div>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- Product info -->
+            <div class="d-flex flex-column p-4">
+              <div>
+                <p class="product-card-name"><strong><%= product.name %></strong></p>
+                <p><em>Expiration date:</em> <%= product.expiration_date %></p>
+                <p><em>Country of origin:</em> <%= product.country %></p>
+              </div>
+
+              <div class="d-flex flex-row justify-content-between">
+                <p><strong><%= product.butchery.name %></strong></p>
+                <p><strong>S$<%= product.price %></strong></p>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <%= link_to "Order now", new_product_order_path(product), class: "btn btn-long-black" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
     <% end %>
   </div>
 </div>

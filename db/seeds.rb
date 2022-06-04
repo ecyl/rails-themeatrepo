@@ -46,7 +46,8 @@ puts "Creating Butcheries..."
       name: names.sample,
       price: Faker::Number.decimal(l_digits: 2),
       country: country.sample,
-      expiration_date: Faker::Date.in_date_period
+      expiration_date: Faker::Date.between(from: Date.today, to: 12.days.from_now),
+      discount_percentage: [10, 15, 20, 25, 30, 35, 40].sample
     )
     product.butchery = butchery
     product.save

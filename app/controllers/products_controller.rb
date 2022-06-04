@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   before_action :set_butchery, except: [:index, :show]
-  before_action :set_current_price, only: [:index, :show]
+  before_action :set_discounted_price, only: [:index, :show]
 
   def index
     @products = Product.all
@@ -46,17 +46,23 @@ class ProductsController < ApplicationController
     @butcheries = current_user.butcheries
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
   def product_params
     params.require(:product).permit(:name, :price, :country, :expiration_date)
   end
 
   # discount logic
   def on_discount?
+    @product = set_product
     date_difference = @product.expiration_date - Date.today
-    @on_discount = date_difference > 3
+    @on_discount = date_difference < 3
   end
 
-  def set_current_price
-    @product.price = @product.discounted_price if on_discount?
+  def set_discounted_price
+    @product = set_product
+    @discounted_price = (@product.price * (1 - (@product.discount_percentage / 100.00))).round(2) if on_discount?
   end
 end
