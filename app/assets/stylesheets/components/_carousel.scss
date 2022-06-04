@@ -1,0 +1,33 @@
+.carousel {
+  position: relative;
+  text-align: center;
+}
+
+.carousel-image {
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+}
+
+.intro-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  transform: translate(-50%, -50%);
+}
+
+.carousel h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.carousel p {
+  font-size: 32px;
+  color: white;
+  opacity: 0.9;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}

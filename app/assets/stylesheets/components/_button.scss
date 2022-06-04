@@ -15,14 +15,22 @@
   right: 15px;
 }
 
-.shop-now-btn {
-  color: white;
-  font-weight: bold;
-  margin-left: 2em;
-  padding: 12px;
-}
-
 .btn-long-black:hover {
   background-color: #ababab;
   color: black;
+}
+
+.btn-short-gold {
+  background-color: #C8963E;
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+  text-decoration: none;
+  height: 50px;
+  width: 300px;
+  margin-left: 2em;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
