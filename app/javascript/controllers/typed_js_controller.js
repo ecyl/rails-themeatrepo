@@ -7,9 +7,9 @@ export default class extends Controller {
     new Typed(this.element, {
       strings: ["meats", "beef", "pork", "poultry", "lamb"],
       typeSpeed: 70,
-      startDelay: 1200,
+      startDelay: 900,
       backSpeed: 70,
-      backDelay: 900,
+      backDelay: 2000,
       loop: true
     });
   }
