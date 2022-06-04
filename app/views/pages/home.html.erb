@@ -46,7 +46,7 @@
           <% date_difference = @products[i].expiration_date - Date.today %>
 
           <!-- Product info -->
-          <div class="d-flex flex-column p-4" style="height: 220px;">
+          <div class="d-flex flex-column p-3" style="height: 240px;">
 
             <% unless date_difference < 3 %>
               <%= render "card_info", name: @products[i].name, exp_date: @products[i].expiration_date, country: @products[i].country, butchery_name: @products[i].butchery.name, price: @products[i].price %>
@@ -58,7 +58,7 @@
 
             <% if current_user.role == 'buyer' %>
               <div class="d-flex justify-content-center">
-                <%= link_to "Order now", new_product_order_path(@products[i].id), class: "btn btn-long-black" %>
+                <%= link_to "Order", new_product_order_path(@products[i].id), class: "btn btn-medium-black" %>
               </div>
             <% end %>
 
