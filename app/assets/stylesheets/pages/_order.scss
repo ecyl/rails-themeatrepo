@@ -1,4 +1,11 @@
-h1 {
+.order-summary {
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.order-summary-title {
   text-align: center;
   margin-top: 32px;
   font-weight: bold;

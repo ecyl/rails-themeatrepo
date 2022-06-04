@@ -1,15 +1,16 @@
 <%# if role is buyer %>
 <%# buyer should see products that was added, quantity, amount, checkout button %>
 <% if current_user.role == 'buyer' %>
-  <div class="container">
-    <h1>My Orders</h1>
+<div class="order-summary">
+  <div class="order-summary-header">
+    <h1 class="order-summary-title">My Orders</h1>
   </div>
 
-  <div class="container">
-    <table class="table">
-      <thead>
+  <table class="table">
+      <thead class="table-header">
         <tr>
-          <th scope="col">Product Name</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
           <th scope="col">Quantity</th>
           <th scope="col">Amount</th>
         </tr>
@@ -19,6 +20,7 @@
         <% @orders.each do |order| %>
         <tr>
             <td><%= order.product.name %></td>
+            <td><%= order.product.price %></td>
             <td><%= order.quantity %></td>
             <% total = order.quantity * order.product.price %>
             <td>$<%= total.to_f.round(2) %></td>
@@ -27,7 +29,9 @@
       </tbody>
     </table>
     <button class="btn-black" href="#">Checkout</button>
-  </div>
+
+</div>
+
 
  <%# if role is seller %>
  <% else %>
