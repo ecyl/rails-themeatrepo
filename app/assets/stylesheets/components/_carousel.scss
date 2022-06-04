@@ -31,3 +31,14 @@
   opacity: 0.9;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-actions {
+  width: 30%;
+}

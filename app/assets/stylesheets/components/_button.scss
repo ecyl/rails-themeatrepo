@@ -10,7 +10,7 @@
 }
 
 .btn-medium-black {
-  background: #000000;
+  background: #1E1E24;
   width: 75%;
   color: white;
   padding: 8px 90px;
@@ -32,16 +32,40 @@
 }
 
 .btn-short-gold {
-  background-color: #C8963E;
-  color: white;
-  font-weight: bold;
-  font-size: 32px;
+  background-color: rgba(200, 150, 62, 0.8);
+  color: #FFF8F0;
+  font-size: 24px;
   text-decoration: none;
-  height: 50px;
-  width: 300px;
-  margin-left: 2em;
-  padding: 18px;
+  width: 40%;
+  padding: 10px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn-short-gold:hover {
+  background-color: #C8963E;
+  color: #FFF8F0;
+}
+
+.shop-now-btn {
+  background-color: #FFF8F0;
+  color: #1E1E24;
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: none;
+  width: 20%;
+  padding: 10px 0px;
+  border-radius: 16px;
+  border: 1px solid #1E1E24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-now-btn:hover {
+  background-color: #1E1E24;
+  color: #FFF8F0;
+  border: 1px solid #FFF8F0;
 }

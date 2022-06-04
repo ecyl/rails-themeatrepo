@@ -44,13 +44,13 @@
     <div class="introductory-text">
       <h1>Find the best meats on the island</h1>
       <p>The Meat Repo is an online marketplace for finding and selling meats in Singapore</p>
-      <%= link_to "Shop now", products_path, class: "btn btn-short-gold mb-3 ms-0" %>
+      <div class="d-flex justify-content-center"><%= link_to "Shop now", products_path, class: "shop-now-btn mb-3 ms-0" %></div>
     </div>
 
     <% unless user_signed_in? %>
-      <div class="user-actions">
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-success" %>
-        <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-light" %>
+      <div class="user-actions d-flex justify-content-around">
+        <%= link_to "Log in", new_user_session_path, class: "btn-short-gold" %>
+        <%= link_to 'Sign up', new_user_registration_path, class: "btn-short-gold" %>
       </div>
     <% end %>
   </div>
@@ -78,7 +78,7 @@
             <% end %>
           </div>
 
-          <%# Logic behind discount and expiration date %>
+          <!-- Logic behind discount and expiration date -->
           <% discounted_price =  (@products[i].price * (1 - (@products[i].discount_percentage / 100.00))).round(2) %>
           <% date_difference = @products[i].expiration_date - Date.today %>
 
@@ -90,8 +90,6 @@
             <% else %>
               <%= render "card_info_discount", name: @products[i].name, exp_date: @products[i].expiration_date, country: @products[i].country, butchery_name: @products[i].butchery.name, price: @products[i].price, discounted_price: discounted_price %>
             <% end %>
-
-
 
             <% if current_user.nil? %>
               <div class="d-flex justify-content-center">
