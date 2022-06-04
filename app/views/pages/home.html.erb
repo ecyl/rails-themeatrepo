@@ -39,8 +39,9 @@
 <!-- 6 product cards -->
 <div class="container mb-5">
   <div class="row my-5">
-    <div class="col-12 text-center">
-      <h2><strong>Products</strong></h2>
+    <div class="col-12 text-center" style="position: relative">
+      <h2 class="mb-0"><strong>Products</strong></h2>
+      <%= link_to "See all", products_path, class: "btn-medium-black", style: "position: absolute; top:0; right: 0;"%>
     </div>
   </div>
 
@@ -85,9 +86,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-
-  <div class="d-flex justify-content-end">
-    <%= link_to "See all", products_path, class: "btn btn-dark" %>
   </div>
 </div>
