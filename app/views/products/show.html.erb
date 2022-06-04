@@ -4,43 +4,87 @@
     <%= link_to "Back", products_path, class: "text-decoration-none back-link" %>
   </div>
 
+<%# product info %>
   <div class="row">
     <!-- Product Image -->
     <div class="col-12 col-md-6">
-      <img src="https://source.unsplash.com/random/388x235" alt="product image" class="w-100">
+      <img src="https://source.unsplash.com/random/406x246/?butcher,<%= @product.name %>" alt="product image" class="w-100">
     </div>
 
     <!-- Product Info -->
-    <div class="col-12 col-md-6 px-4">
-      <!--Name-->
-      <div>
-        <h1><strong><%= @product.name %></strong></h1>
-      </div>
-      <!-- Price -->
-      <div>
-        <p class="product-price">S$<%= @product.price %></p>
-      </div>
-
-      <hr>
-      <!-- Details -->
-      <div class="d-flex flex-column" style="height: 60%">
-        <div class="d-flex">
-          <p class="product-detail-subheader text-muted">Country of Origin:</p>
-          <p class="product-detail-subheader"><%= @product.country %></p>
+    <% unless @on_discount %>
+      <div class="col-12 col-md-6 px-4">
+        <!--Name-->
+        <div>
+          <h1><strong><%= @product.name %></strong></h1>
+        </div>
+        <!-- Price -->
+        <div>
+          <p class="product-price">S$<%= @product.price %></p>
         </div>
 
-        <div class="d-flex">
-          <p class="product-detail-subheader text-muted">Expiration Date:</p>
-          <p class="product-detail-subheader"><%= @product.expiration_date %></p>
-        </div>
+        <hr>
+        <!-- Details -->
+        <div class="d-flex flex-column" style="height: 60%">
+          <div class="d-flex">
+            <p class="product-detail-subheader text-muted">Country of Origin:</p>
+            <p class="product-detail-subheader"><%= @product.country %></p>
+          </div>
 
-        <!-- Add to cart btn -->
-        <div class="mt-auto">
-          <%= link_to "Order now", new_product_order_path(@product), class: "btn btn-long-black" %>
-        </div>
+          <div class="d-flex">
+            <p class="product-detail-subheader text-muted">Expiration Date:</p>
+            <p class="product-detail-subheader"><%= @product.expiration_date %></p>
+          </div>
 
+          <!-- Add to cart btn -->
+          <div class="mt-auto">
+            <%= link_to "Order now", new_product_order_path(@product), class: "btn btn-long-black" %>
+          </div>
+
+        </div>
       </div>
-    </div>
+    <% else %>
+      <div class="col-12 col-md-6 px-4">
+        <!--Name-->
+        <div>
+          <h1><strong><%= @product.name %></strong></h1>
+        </div>
+        <!-- Price -->
+        <div>
+          <p class="product-price"><s>S$<%= @product.price %></s>
+            <span class="product-price px-2">
+            <i class="fa-solid fa-tag" style="color: #F3A326;"></i>
+            S$<%= @discounted_price %></span>
+          </p>
+        </div>
+
+        <hr>
+        <!-- Details -->
+        <div class="d-flex flex-column" style="height: 60%">
+          <div class="d-flex">
+            <p class="product-detail-subheader text-muted">Country of Origin:</p>
+            <p class="product-detail-subheader"><%= @product.country %></p>
+          </div>
+
+          <div class="d-flex">
+            <p class="product-detail-subheader text-muted">Expiration Date:</p>
+            <p class="product-detail-subheader">
+              <%= @product.expiration_date %>
+              <span><i class="fa-solid fa-triangle-exclamation" style="color: #FB0011;"></i></span>
+
+              <span><u><%= (@product.expiration_date - Date.today).round %></u> days away</span>
+            </p>
+          </div>
+
+          <!-- Add to cart btn -->
+          <div class="mt-auto">
+            <%= link_to "Order now", new_product_order_path(@product), class: "btn btn-long-black" %>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </div>
 
