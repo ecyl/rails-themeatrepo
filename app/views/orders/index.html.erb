@@ -1,56 +1,137 @@
 <%# if role is buyer %>
 <%# buyer should see products that was added, quantity, amount, checkout button %>
 <% if current_user.role == 'buyer' %>
-  <h1>My Orders</h1>
-
+<%# Order Summary Table %>
+<div class="order-summary">
+  <div class="order-summary-header">
+    <h1 class="order-summary-title">My Orders</h1>
+    <%= link_to "Continue Shopping", root_path, class: "back-link" %>
+  </div>
+  <%# Order Summary Table headers %>
   <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Product Name</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Amount</th>
-      </tr>
-    </thead>
+      <thead class="table-header">
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col" class="order-product-total">Amount</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <% @orders.each do |order| %>
-      <tr>
-          <td><%= order.product.name %></td>
-          <td><%= order.quantity %></td>
-          <% total = order.quantity * order.product.price %>
-          <td>$<%= total.to_f.round(2) %></td>
-      </tr>
+  <% @subtotal = 0 %>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr class="order-summary-row">
+
+            <td class="order-product">
+             <div class="product-information">
+              <div class="product-image">
+                <%= image_tag "chicken.jpg" %>
+              </div>
+              <div>
+                <div class="product-name">
+                  <strong><%= order.product.country %> <%= order.product.name %></strong>
+                </div>
+                <div class="butchery-name">
+                  From: <%= order.product.butchery.name %>
+                </div>
+                <div class="product-expiration-date">
+                  Expiring on: <em><%= order.product.expiration_date %></em>
+                </div>
+              </div>
+             </div>
+            </td>
+
+            <td class="order-product-price">$<%= order.product.price %></td>
+            <td class="order-quantity"><%= order.quantity %></td>
+            <% @total = order.quantity * order.product.price %>
+            <td class="order-product-total">$<%= @total.to_f.round(2) %></td>
+            <% @subtotal += @total %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%# Order Summary Table footer %>
+    <div class="order-footer">
+      <div class="order-subtotal">
+        <span class="order-subtotal-title">Subtotal</span>
+        <span class="order-subtotal-price">$ <%= @subtotal.to_f.round(2) %></span>
+      </div>
+      <button class="btn-black" href="#">Checkout</button>
+    </div>
+</div>
+
+<%# if role is seller %>
+<% else %>
+ <div class="order-summary">
+  <div class="order-summary-header">
+    <h1 class="order-summary-title">Summary</h1>
+
+    <div class="seller-order-summary">
+
+    <div class="seller-order-summary-details">
+    <h3>Total Sales</h3>
+    <%# Logic to calculate the total sales %>
+    <% @total_sales = 0 %>
+    <% @orders.each do |order| %>
+      <%# check if order is fulfilled %>
+      <% if order.order_status == "true" %>
+        <%# if order is fulfilled, sale is added into order %>
+        <% @total = order.quantity * order.product.price%>
+        <% @total_sales += @total %>
       <% end %>
-    </tbody>
-  </table>
-  <a class="btn-long-black" href="#">checkout</a>
- <%# if role is seller %>
- <% else %>
-    <h1>My Pending Orders</h1>
-  <%# seller should see the order id, customer name, address, phone number, order status %>
-  <table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">Order Id</th>
-        <th scope="col">Customer Name</th>
-        <th scope="col">Delivery Address</th>
-        <th scope="col">Order Details</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Order Status</th>
-      </tr>
-    </thead>
+      <% @total_sales %>
+    <% end %>
+    <p><%= @total_sales %></p>
+    </div>
 
-    <tbody>
-      <% @orders.each do |order| %>
-      <tr>
-        <th scope ="row"><%= order.id %></td>
-            <td><%= order.user.name %></td>
-            <td><%= order.user.address %></td>
-            <td><%= order.product.name %></td>
-            <td><%= order.quantity %></td>
-            <td><%= order.order_status %></td>
-          <% end %>
-      </tr>
-    </tbody>
-  </table>
+    <div class="seller-order-summary-details">
+    <h3>Total Orders</h3>
+    <% @total_order = 0 %>
+    <% @orders.each do |order| %>
+      <%# check if the order has been fulfilled %>
+      <% if order.order_status == "true" %>
+        <%# total order + 1 %>
+        <% @total_order += 1 %>
+      <% end %>
+      <% @total_order %>
+    <% end %>
+    <p><%= @total_order %></p>
+    </div>
+  </div>
+  </div>
+    <%# seller should see the order id, customer name, address, phone number, order status %>
+    <table class="table">
+      <thead>
+      <h2 class="table-title">Orders</h2>
+        <tr>
+          <th scope="col">Order Id</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Delivery Address</th>
+          <th scope="col">Contact Number</th>
+          <th scope="col">Delivery Date</th>
+          <th scope="col" class="order-status">Order Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <th scope ="row" class="order-id"><%= order.id %></td>
+              <td><%= order.user.name %></td>
+              <td><%= order.user.address %></td>
+              <td><%= order.user.phone_number %></td>
+              <td>delivery date</td>
+
+              <% if order.order_status == "true" %>
+                <td class="order-status"><%= link_to orders_path(order.id) %><i class="fa fa-check-square-o"></i></td>
+                <% else %>
+                <td class="order-status"><i class="fa fa-square-o"></i></td>
+              <% end %>
+
+            <% end %>
+        </tr>
+      </tbody>
+    </table>
+ </div>
 <% end %>

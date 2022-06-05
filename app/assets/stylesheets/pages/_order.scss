@@ -1,0 +1,80 @@
+.order-summary {
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.order-summary-header {
+  text-align: center;
+  padding: 8px;
+}
+
+.order-summary-title {
+  margin-top: 32px;
+  font-weight: bold;
+}
+
+img {
+  max-height: 95px;
+  max-width: 100%;
+  border: 0;
+  margin: 0 auto;
+}
+
+.product-information{
+  display: flex;
+  gap: 44px;
+}
+
+.product-image {
+  padding-right: 3 rem;
+  flex: 9rem 0 0;
+}
+
+.order-footer {
+  text-align: right!important;
+}
+
+.order-product-total {
+  text-align: right;
+}
+
+.order-product-total th {
+  text-align: right;
+}
+
+.order-subtotal {
+  font-size: 24px;
+}
+
+.order-subtotal-title {
+  margin-right: 80px;
+}
+
+.seller-order-summary {
+  display: flex;
+  justify-content: center;
+  gap: 500px;
+}
+
+.seller-order-summary-details {
+  border: 2px solid #c8963e;
+  background: white;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+td.order-status {
+  text-align: center;
+}
+
+th.order-status {
+  text-align: center;
+}
+
+.table-title {
+  text-align: center;
+  margin-top: 8px;
+  padding: 16px;
+}

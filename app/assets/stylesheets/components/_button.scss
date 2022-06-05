@@ -17,8 +17,9 @@
 
 .btn-medium-black {
   background: #1E1E24;
-  width: 75%;
+  width: 250px;
   color: #FFF8F0;
+  font-size: 18px;
   text-decoration: none;
   padding: 8px 90px;
   border-radius: 4px;
@@ -76,4 +77,10 @@
   background-color: #1E1E24;
   color: #FFF8F0;
   border: 1px solid #FFF8F0;
+}
+
+.btn-black {
+  background: #1E1E24;
+  width: 20%;
+  color: white;
 }
