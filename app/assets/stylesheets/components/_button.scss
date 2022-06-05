@@ -85,8 +85,11 @@
 
 .btn-black {
   background: #1E1E24;
-  width: 20%;
+  width: 40%;
   color: white;
+  text-decoration: none;
+  width: 40%;
+  padding: 10px;
 }
 
 .add-product {
@@ -102,5 +105,13 @@
 
 .add-product:hover {
   color: #c8963e;
+}
 
+.btn-black:hover {
+  background: #42424e;
+  width: 40%;
+  color: white;
+  text-decoration: none;
+  width: 40%;
+  padding: 10px;
 }
