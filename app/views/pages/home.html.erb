@@ -36,23 +36,32 @@
   </div>
 </div>
 
-<!-- 6 product cards -->
+<!-- Product cards -->
 <div class="container mb-5">
   <div class="row my-5">
     <div class="col-12 text-center" style="position: relative">
-      <h2 class="mb-0"><strong>Products</strong></h2>
+      <h2 class="mb-0"><strong>Flash Sales</strong></h2>
       <%= link_to "See all", products_path, class: "btn-medium-black", style: "position: absolute; top:0; right: 0;"%>
     </div>
   </div>
 
-  <div class="row">
-    <% 6.times do |i| %>
+  <!-- Check for expiring products -->
+  <% expiring_products = [] %>
+
+  <% @products.each do |product| %>
+    <% date_difference = product.expiration_date - Date.today %>
+    <% expiring_products << product if date_difference < 3 %>
+  <% end %>
+
+  <!-- Display the Expiring Products - Flash Sales -->
+  <div class="row vertical-scroll-container">
+     <% expiring_products.each do |product| %>
       <div class="col-12 col-sm-6 col-md-4 mb-4">
-        <div class="card bg-white rounded">
+        <div class="expiring-card bg-white rounded">
           <!-- Image -->
           <div class="product-image-container">
-            <%= link_to product_path(@products[i].id), class: "text-decoration-none" do %>
-              <img src="https://source.unsplash.com/random/406x246/?butcher,<%= @products[i].name %>" class="product-card-image" alt="product image">
+            <%= link_to product_path(product.id), class: "text-decoration-none" do %>
+              <img src="https://source.unsplash.com/random/406x246/?butcher,<%= product.name %>" class="product-card-image" alt="product image">
               <div class="overlay">
                 <div class="view-product-text">View</div>
               </div>
@@ -60,30 +69,45 @@
           </div>
 
           <!-- Logic behind discount and expiration date -->
-          <% discounted_price =  (@products[i].price * (1 - (@products[i].discount_percentage / 100.00))).round(2) %>
-          <% date_difference = @products[i].expiration_date - Date.today %>
+          <% discounted_price =  (product.price * (1 - (product.discount_percentage / 100.00))).round(2) %>
+          <% date_difference = product.expiration_date - Date.today %>
 
           <!-- Product info -->
           <div class="d-flex flex-column p-3" style="height: 240px;">
 
             <% unless date_difference < 3 %>
-              <%= render "card_info", name: @products[i].name, exp_date: @products[i].expiration_date, country: @products[i].country, butchery_name: @products[i].butchery.name, price: @products[i].price %>
+              <%= render "card_info", name: product.name, exp_date: product.expiration_date, country: product.country, butchery_name: product.butchery.name, price: product.price %>
             <% else %>
-              <%= render "card_info_discount", name: @products[i].name, exp_date: @products[i].expiration_date, country: @products[i].country, butchery_name: @products[i].butchery.name, price: @products[i].price, discounted_price: discounted_price %>
+              <%= render "card_info_discount", name: product.name, exp_date: product.expiration_date, country: product.country, butchery_name: product.butchery.name, price: product.price, discounted_price: discounted_price %>
             <% end %>
 
             <% if current_user.nil? %>
               <div class="d-flex justify-content-center">
-                <%= link_to "Order", new_product_order_path(@products[i].id), class: "btn-medium-black" %>
+                <%= link_to "Order", new_product_order_path(product.id), class: "btn-medium-black" %>
               </div>
             <% elsif current_user.role == "buyer" %>
               <div class="d-flex justify-content-center">
-                <%= link_to "Order", new_product_order_path(@products[i].id), class: "btn-medium-black" %>
+                <%= link_to "Order", new_product_order_path(product.id), class: "btn-medium-black" %>
               </div>
             <% end %>
-
           </div>
         </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <!-- Horizontal Scroll -->
+  <div class="horizontal-scroll-container">
+    <% expiring_products.each do |product| %>
+      <div class="horizontal-scroll-item">
+      et
+      </div>
+      <div class="horizontal-scroll-item">
+      et
+      </div>
+      <div class="horizontal-scroll-item">
+      et
       </div>
     <% end %>
   </div>

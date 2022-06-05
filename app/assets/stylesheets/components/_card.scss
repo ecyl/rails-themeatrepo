@@ -101,3 +101,19 @@
   position: relative;
   height: 300px;
 }
+
+.vertical-scroll-container {
+  height: 80vh;
+  width: auto;
+  overflow: scroll;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+
+.horizontal-scroll-item {
+  flex: 0 0 auto;
+}
