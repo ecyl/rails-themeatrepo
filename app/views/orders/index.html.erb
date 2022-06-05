@@ -57,13 +57,8 @@
         <span class="order-subtotal-title">Subtotal</span>
         <span class="order-subtotal-price">$ <%= @subtotal.to_f.round(2) %></span>
       </div>
-      <% @orders.each do |order| %>
-        <%= link_to "Checkout", product_order_path(order.product_id, order.id), class: "btn-black" %>
-      <% end %>
-
-      <%# <button class="btn-black" href="#">Checkout</button> %>
+        <%= link_to "Checkout", order_path(@orders), class: "btn-black" %>
     </div>
-
 </div>
 
 <%# if role is seller %>
