@@ -62,7 +62,7 @@ puts "Creating Customers..."
     name: Faker::Name.name,
     address: Faker::Address.street_address,
     password: "12345678",
-    phone_number: "9643 2140",
+    phone_number: "96432140",
     role: "buyer"
   )
   customer.save

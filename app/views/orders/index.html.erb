@@ -82,6 +82,7 @@
   </div>
   </div>
     <%# seller should see the order id, customer name, address, phone number, order status %>
+
     <table class="table">
       <thead>
       <h2 class="table-title">Orders</h2>
@@ -95,23 +96,28 @@
         </tr>
       </thead>
 
+<% @customers = User.where(role: "buyer") %>
       <tbody>
-        <% @orders.each do |order| %>
+      <%  @customers.each do |customer| %>
+
+      <% @orders.each do |order| %>
+      <%# Return all customers who ordered the product %>
+
+      <% if order.user_id == customer.id %>
         <tr>
           <th scope ="row" class="order-id"><%= order.id %></td>
               <td><%= order.user.name %></td>
               <td><%= order.user.address %></td>
               <td><%= order.user.phone_number %></td>
               <td>delivery date</td>
-
-              <% if order.order_status == "true" %>
-                <td class="order-status"><%= link_to orders_path(order.id) %><i class="fa fa-check-square-o"></i></td>
-                <% else %>
-                <td class="order-status"><i class="fa fa-square-o"></i></td>
-              <% end %>
-
-            <% end %>
+              <form action="/orders">
+              <td class="align-center"><input type="checkbox" value="completed"></td>
+              </form>
         </tr>
+          <% end %>
+      <% end %>
+
+      <% end %>
       </tbody>
     </table>
  </div>
