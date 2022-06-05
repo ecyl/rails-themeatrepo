@@ -84,3 +84,19 @@
   width: 20%;
   color: white;
 }
+
+.add-product {
+  background-color: #1E1E24;
+  width: 30px;
+  height: 15px;
+  text-decoration: none;
+  color: #FFF8F0;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.add-product:hover {
+  color: #c8963e;
+
+}
