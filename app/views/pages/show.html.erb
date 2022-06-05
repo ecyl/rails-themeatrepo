@@ -1,7 +1,7 @@
 <div class="container">
   <div class="welcome-container" style="margin-top: 20px;">
-    <strong><h3>Hi <%= @user.name %></h3></strong>
-    <h1>Welcome Home</h1>
+    <strong><h1>Hi <%= @user.name %></h1></strong>
+    <h2>Welcome Home</h2>
   </div>
 
   <div class="row mt-4 d-flex">
@@ -68,6 +68,7 @@
   </div>
 
   <div class="row col-3">
+    <h3>Your sales</h3>
     <div class="sales-container data-card">
       <h3>Total sales so far</h3>
       <p>$<%= @total_sales %></p>
