@@ -102,5 +102,24 @@
 
 .add-product:hover {
   color: #c8963e;
+}
 
+.btn-small-gold {
+  background-color: #c8963e;
+  color: #FFF8F0;
+  border-color: #FFF8F0;
+  padding:.375rem .75rem;
+  display: inline-block;
+  text-decoration: none;
+  text-align:center;
+  vertical-align:middle;
+  font-weight:400;
+  line-height:1.5;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.btn-small-gold:hover {
+  background-color: #a2731f;
+  color: #FFF8F0;
 }

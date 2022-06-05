@@ -28,16 +28,11 @@
               <% end %>
             </ul>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-
         </ul>
 
         <% if user_signed_in? %>
           <ul class="list-inline mt-3 ms-2">
-            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn-small-gold", :method => :delete %></li>
           </ul>
         <% end %>
       </div>
@@ -67,7 +62,7 @@
           </li>
 
           <li class="nav-item dropdown">
-          <%= link_to "My Orders", orders_path, class: "nav-link dropdown-toggle", id: "navbarDropdown"%>
+          <%= link_to "My Orders", orders_path, class: "nav-link"%>
           </li>
 
         </ul>
@@ -78,7 +73,7 @@
 
           <% if user_signed_in? %>
             <ul class="list-inline mt-3 ms-2">
-              <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn-small-gold", :method => :delete %></li>
             </ul>
           <% end %>
         </div>
@@ -115,11 +110,6 @@
               <% end %>
             </ul>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-
         </ul>
 
         <div class="navbar-right d-flex align-items-center">
@@ -127,7 +117,7 @@
 
         <% if user_signed_in? %>
           <ul class="list-inline mt-3 ms-2">
-            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn-small-gold", :method => :delete %></li>
           </ul>
         <% end %>
         </div>
