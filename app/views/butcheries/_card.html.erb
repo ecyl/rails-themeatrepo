@@ -60,12 +60,12 @@
         <% else %>
           <%= render "card_info", product_name: product_name, exp_date: exp_date, country: country, price: price %>
         <% end %>
-      </div>
         <% if current_user.role == 'buyer' %>
           <div class="d-flex justify-content-center " style="position: absolute; bottom: 15px;">
-            <%= link_to "Order", new_product_order_path(product), class: "btn btn-medium-black" %>
+            <%= link_to "Order", new_product_order_path(product), class: "btn btn-short-black" %>
           </div>
         <% end %>
+      </div>
 
     </div>
   </div>
