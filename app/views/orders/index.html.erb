@@ -26,7 +26,7 @@
             <td class="order-product">
              <div class="product-information">
               <div class="product-image">
-                <%= image_tag "chicken.jpg" %>
+                <%= image_tag "chicken.jpg", class: "image" %>
               </div>
               <div>
                 <div class="product-name">
@@ -72,31 +72,12 @@
     <div class="seller-order-summary-details">
     <h3>Total Sales</h3>
     <%# Logic to calculate the total sales %>
-    <% @total_sales = 0 %>
-    <% @orders.each do |order| %>
-      <%# check if order is fulfilled %>
-      <% if order.order_status == "true" %>
-        <%# if order is fulfilled, sale is added into order %>
-        <% @total = order.quantity * order.product.price%>
-        <% @total_sales += @total %>
-      <% end %>
-      <% @total_sales %>
-    <% end %>
     <p><%= @total_sales %></p>
     </div>
 
     <div class="seller-order-summary-details">
-    <h3>Total Orders</h3>
-    <% @total_order = 0 %>
-    <% @orders.each do |order| %>
-      <%# check if the order has been fulfilled %>
-      <% if order.order_status == "true" %>
-        <%# total order + 1 %>
-        <% @total_order += 1 %>
-      <% end %>
-      <% @total_order %>
-    <% end %>
-    <p><%= @total_order %></p>
+    <h3>Completed Orders</h3>
+    <p><%= @completed.length %></p>
     </div>
   </div>
   </div>

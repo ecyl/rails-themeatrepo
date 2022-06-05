@@ -102,6 +102,21 @@
   height: 300px;
 }
 
+.data-card {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  background-color: #1E1E24;
+  color: #FFF8F0;
+}
+
+  h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+  
 .vertical-scroll-container {
   height: 80vh;
   width: auto;
