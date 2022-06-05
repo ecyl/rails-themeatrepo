@@ -8,22 +8,26 @@ class OrdersController < ApplicationController
     # If is the seller
     # if current_user.role == "seller"
     #   # Return all orders for products he has created
-    #   @orders = current_user.orders
+    #   @orders = Order.where(product: current_user.products)
     # else
     # # If is a buyer
     #   # Return all orders that he placed
     #   @orders = current_user.orders
     # end
-
     # refactoring
-    @orders = current_user.orders
-    @completed = @orders.where(order_status: true)
-    @total_sales = 0
-    @completed.each do |complete|
-      product_id = complete.product_id
-      product = Product.find(product_id)
-      price = product.price * complete.quantity
-      @total_sales += price
+
+    if current_user.role == "seller"
+      @orders = Order.where(product: current_user.products)
+      @completed = @orders.where(order_status: true)
+      @total_sales = 0
+      @completed.each do |complete|
+        product_id = complete.product_id
+        product = Product.find(product_id)
+        price = product.price * complete.quantity
+        @total_sales += price
+      end
+    else
+      @orders = current_user.orders
     end
   end
 
