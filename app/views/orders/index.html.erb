@@ -48,7 +48,7 @@
             <td class="order-product-total">$<%= @total.to_f.round(2) %></td>
             <% @subtotal += @total %>
         </tr>
-        <% end %>
+      <% end %>
       </tbody>
     </table>
   <%# Order Summary Table footer %>
@@ -57,7 +57,7 @@
         <span class="order-subtotal-title">Subtotal</span>
         <span class="order-subtotal-price">$ <%= @subtotal.to_f.round(2) %></span>
       </div>
-      <button class="btn-black" href="#">Checkout</button>
+        <%= link_to "Checkout", order_path(@orders), class: "btn-black" %>
     </div>
 </div>
 
@@ -96,7 +96,7 @@
         </tr>
       </thead>
 
-<% @customers = User.where(role: "buyer") %>
+    <% @customers = User.where(role: "buyer") %>
       <tbody>
       <%  @customers.each do |customer| %>
 
