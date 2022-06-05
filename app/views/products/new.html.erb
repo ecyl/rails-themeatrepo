@@ -1,19 +1,19 @@
 
 <div class="row">
-  <div class="form-container col-6 d-flex justify-content-center align-items-center flex-column">
+  <div class="form-container col-6 d-flex justify-content-center align-items-center flex-column p-5">
     <div class="form-header mb-3">
-      <strong><h1>Create a product</h1></strong>
+      <strong><h1 style="font-weight: 600">Create a product</h1></strong>
     </div>
 
     <div class="form-contents">
       <%= simple_form_for([@user, @butchery, @product]) do |f| %>
         <%= f.input :name %>
-        <%= f.input :price %>
-        <%= f.input :country %>
-        <%= f.input :expiration_date, as: :date, html5: true%>
-        <%= f.input :discount_percentage%>
+        <%= f.input :price  %>
+        <%= f.input :country  %>
+        <%= f.input :expiration_date, as: :date, html5: true %>
+        <%= f.input :discount_percentage %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit "Submit", class: "btn btn-primary"%>
+        <%= f.submit "Submit", class: "btn btn-submit-black"%>
       <% end %>
 
     </div>
