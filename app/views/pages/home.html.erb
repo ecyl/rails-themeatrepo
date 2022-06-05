@@ -26,8 +26,8 @@
       <p>The Meat Repo is an online marketplace for finding and selling meats in Singapore</p>
       <div class="d-flex justify-content-center"><%= link_to "Shop now", products_path, class: "shop-now-btn mb-3 ms-0" %></div>
     </div>
-
-    <% unless user_signed_in? %>
+  <!-- New User -->
+    <% if current_user.nil? %>
       <div class="user-actions d-flex justify-content-around">
         <%= link_to "Log in", new_user_session_path, class: "btn-short-gold" %>
         <%= link_to 'Sign up', new_user_registration_path, class: "btn-short-gold" %>
