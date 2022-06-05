@@ -112,8 +112,14 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
+  height: 350px;
+  align-items: center;
 }
 
 .horizontal-scroll-item {
   flex: 0 0 auto;
+}
+
+.butcheries-logo {
+  max-height: 350px;
 }

@@ -95,20 +95,67 @@
       </div>
     <% end %>
   </div>
+</div>
 
+<!-- Butcheries -->
+<div class="container mb-5">
+  <div class="row my-5">
+    <div class="col-12 text-center">
+      <h2 class="mb-0"><strong>Butcheries</strong></h2>
+    </div>
+  </div>
 
   <!-- Horizontal Scroll -->
-  <div class="horizontal-scroll-container">
-    <% expiring_products.each do |product| %>
-      <div class="horizontal-scroll-item">
-      et
-      </div>
-      <div class="horizontal-scroll-item">
-      et
-      </div>
-      <div class="horizontal-scroll-item">
-      et
-      </div>
-    <% end %>
+  <div class="horizontal-scroll-container bg-white">
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(1) do %>
+        <%= image_tag "butcheries/thirsty-box-logo.png", alt:"Thirsty Box logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(2) do %>
+        <%= image_tag "butcheries/fat-eats-logo.png", alt:"Fat Eats logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(3) do %>
+        <%= image_tag "butcheries/red-sushi-logo.png", alt:"Red Sushi logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(4) do %>
+        <%= image_tag "butcheries/sj-spoon-logo.png", alt:"SJ Spoon logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(5) do %>
+        <%= image_tag "butcheries/zni-house-logo.png", alt:"ZNI House logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(6) do %>
+        <%= image_tag "butcheries/67-box-logo.png", alt:"67 Box logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(7) do %>
+        <%= image_tag "butcheries/big-house-logo.png", alt:"Big House logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(8) do %>
+        <%= image_tag "butcheries/sliver-juice-bar-logo.png", alt:"Silver Juice Bar logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(9) do %>
+        <%= image_tag "butcheries/fat-creamery-logo.png", alt:"Fat Creamery logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
+    <div class="horizontal-scroll-item mx-4">
+      <%= link_to butchery_path(10) do %>
+        <%= image_tag "butcheries/belly-juice-bar-logo.png", alt:"Belly Juice logo", class: "butcheries-logo" %>
+      <% end %>
+    </div>
   </div>
 </div>
