@@ -97,9 +97,12 @@
 }
 
 .btn-black {
-  background: #1e1e24;
-  width: 20%;
+  background: #1E1E24;
+  width: 40%;
   color: white;
+  text-decoration: none;
+  width: 40%;
+  padding: 10px;
 }
 
 .add-product {
@@ -120,4 +123,13 @@
 .btn-submit-black {
   background-color: #1e1e24;
   color: white;
+}
+
+.btn-black:hover {
+  background: #42424e;
+  width: 40%;
+  color: white;
+  text-decoration: none;
+  width: 40%;
+  padding: 10px;
 }

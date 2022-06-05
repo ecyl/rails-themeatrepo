@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   # find the user
-  before_action :find_product_id, only: [:show, :create, :new]
+  before_action :find_product_id, only: [:create, :new]
   # before_action :find_user, only: [:show, :new, :create]
 
   # view all orders
