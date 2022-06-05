@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="welcome-container" style="margin-top: 20px;">
+    <strong><h3>Hi <%= @user.name %></h3></strong>
+    <h1>Welcome Home</h1>
+  </div>
+
+  <div class="row mt-4 d-flex">
+    <div class="col-6">
+      <h3>Your stores</h3>
+      <div class="table-container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Store</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+            </tr>
+          </thead>
+
+          <% if @butcheries.length.zero? %>
+            <tbody>
+              <tr>
+                <td>You have no stores yet</td>
+                <td colspan="3"><%= link_to '+ Add a new store', new_butchery_path, class: "text-decoration-none text-black" %></td>
+              </tr>
+            </tbody>
+          <% else %>
+            <tbody>
+              <% @butcheries.each do |butchery| %>
+                <%= link_to butchery_path(butchery, class: "stretched-link") do %>
+                  <tr>
+                    <td> <%= link_to butchery.name, butchery_path(butchery), class: "text-decoration-none text-black"%></td>
+                    <td><%= butchery.address %></td>
+                    <td><%= butchery.phone_number %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+
+              <tr>
+                <td colspan="3"><%= link_to '+ Add a new store', new_butchery_path, class: "text-decoration-none text-black"%></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <h3>Your orders</h3>
+      <div class="data-container d-flex">
+        <div class="order-container data-card">
+          <h5>Pending orders</h5>
+          <p><%= @pending.length %></p>
+        </div>
+
+        <div class="completed-orders-container data-card">
+          <h5>Completed orders</h5>
+          <p><%= @completed.length %></p>
+        </div>
+
+        <div class="total-orders-received-container data-card">
+          <h5>Total accumulated orders</h5>
+          <p><%= @orders.length %></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3">
+    <div class="sales-container data-card">
+      <h3>Total sales so far</h3>
+      <p>$<%= @total_sales %></p>
+    </div>
+  </div>
+
+</div>

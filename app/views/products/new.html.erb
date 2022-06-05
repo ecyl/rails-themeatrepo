@@ -10,7 +10,9 @@
         <%= f.input :name %>
         <%= f.input :price %>
         <%= f.input :country %>
-        <%= f.input :expiration_date %>
+        <%= f.input :expiration_date, as: :date, html5: true%>
+        <%= f.input :discount_percentage%>
+        <%= f.input :photo, as: :file %>
         <%= f.submit "Submit", class: "btn btn-primary"%>
       <% end %>
 

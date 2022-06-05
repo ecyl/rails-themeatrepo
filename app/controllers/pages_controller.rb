@@ -15,8 +15,22 @@ class PagesController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
+    @butcheries = @user.butcheries
+    @products = @user.products
+    @orders = @user.orders
+    @pending = @orders.where(order_status: false)
+    @completed = @orders.where(order_status: true)
 
+    # Get total sales amount
+    @total_sales = 0
+    @completed.each do |complete|
+      product_id = complete.product_id
+      product = Product.find(product_id)
+      price = product.price * complete.quantity
+      @total_sales += price
+    end
+
+    # Can look into including profit?
   end
-
-
 end
