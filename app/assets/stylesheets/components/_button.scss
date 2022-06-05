@@ -1,7 +1,8 @@
 .btn-long-black {
-  background: #000000;
+  background: #1E1E24;
   width: 100%;
-  color: white;
+  color: #FFF8F0;
+  text-decoration: none;
   padding: 8px 90px;
   border-radius: 4px;
   display: flex;
@@ -9,15 +10,27 @@
   justify-content: center;
 }
 
-.btn-black {
+.btn-long-black:hover {
+  background-color: #56565f;
+  color: #FFF8F0;
+}
+
+.btn-medium-black {
   background: #1E1E24;
-  width: 20%;
-  color: white;
+  width: 250px;
+  color: #FFF8F0;
+  font-size: 18px;
+  text-decoration: none;
   padding: 8px 90px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn-medium-black:hover {
+  background-color: #56565f;
+  color: #FFF8F0;
 }
 
 #new-pdt-btn {
@@ -26,14 +39,48 @@
   right: 15px;
 }
 
-.shop-now-btn {
-  color: white;
-  font-weight: bold;
-  margin-left: 2em;
-  padding: 12px;
+.btn-short-gold {
+  background-color: rgba(200, 150, 62, 0.8);
+  color: #FFF8F0;
+  font-size: 24px;
+  text-decoration: none;
+  width: 40%;
+  padding: 10px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-long-black:hover {
-  background-color: #ababab;
-  color: black;
+.btn-short-gold:hover {
+  background-color: #C8963E;
+  color: #FFF8F0;
+}
+
+.shop-now-btn {
+  background-color: #FFF8F0;
+  color: #1E1E24;
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: none;
+  width: 20%;
+  padding: 10px 0px;
+  border-radius: 16px;
+  border: 1px solid #1E1E24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.shop-now-btn:hover {
+  background-color: #1E1E24;
+  color: #FFF8F0;
+  border: 1px solid #FFF8F0;
+}
+
+.btn-black {
+  background: #1E1E24;
+  width: 20%;
+  color: white;
 }
