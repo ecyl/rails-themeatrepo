@@ -96,8 +96,14 @@
         </tr>
       </thead>
 
+<% @customers = User.where(role: "buyer") %>
       <tbody>
+      <%  @customers.each do |customer| %>
+
       <% @orders.each do |order| %>
+      <%# Return all customers who ordered the product %>
+
+      <% if order.user_id == customer.id %>
         <tr>
           <th scope ="row" class="order-id"><%= order.id %></td>
               <td><%= order.user.name %></td>
@@ -108,6 +114,9 @@
               <td class="align-center"><input type="checkbox" value="completed"></td>
               </form>
         </tr>
+          <% end %>
+      <% end %>
+
       <% end %>
       </tbody>
     </table>

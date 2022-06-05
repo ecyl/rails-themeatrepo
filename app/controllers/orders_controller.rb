@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
     # refactoring
 
     if current_user.role == "seller"
+      # Return all orders for products he has created
       @orders = Order.where(product: current_user.products)
       @completed = @orders.where(order_status: true)
       @total_sales = 0
