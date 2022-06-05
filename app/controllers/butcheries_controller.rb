@@ -16,7 +16,6 @@ class ButcheriesController < ApplicationController
 
   def show
     @products = @butchery.products
-
   end
 
   def create
