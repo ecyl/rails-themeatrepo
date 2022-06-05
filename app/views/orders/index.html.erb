@@ -103,30 +103,30 @@
     <%# seller should see the order id, customer name, address, phone number, order status %>
     <table class="table">
       <thead>
-      <h2>Orders</h2>
+      <h2 class="table-title">Orders</h2>
         <tr>
           <th scope="col">Order Id</th>
           <th scope="col">Customer Name</th>
           <th scope="col">Delivery Address</th>
-          <th scope="col">Order Details</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Order Status</th>
+          <th scope="col">Contact Number</th>
+          <th scope="col">Delivery Date</th>
+          <th scope="col" class="order-status">Order Status</th>
         </tr>
       </thead>
 
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <th scope ="row"><%= order.id %></td>
+          <th scope ="row" class="order-id"><%= order.id %></td>
               <td><%= order.user.name %></td>
               <td><%= order.user.address %></td>
-              <td><%= order.product.name %></td>
-              <td><%= order.quantity %></td>
+              <td><%= order.user.phone_number %></td>
+              <td>delivery date</td>
 
               <% if order.order_status == "true" %>
-                <td><i class="fa fa-check-square-o"></i></td>
+                <td class="order-status"><%= link_to orders_path(order.id) %><i class="fa fa-check-square-o"></i></td>
                 <% else %>
-                <td><i class="fa fa-square-o"></i></td>
+                <td class="order-status"><i class="fa fa-square-o"></i></td>
               <% end %>
 
             <% end %>
