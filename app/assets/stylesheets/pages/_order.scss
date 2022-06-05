@@ -7,6 +7,7 @@
 
 .order-summary-header {
   text-align: center;
+  padding: 8px;
 }
 
 .order-summary-title {
@@ -49,4 +50,18 @@ img {
 
 .order-subtotal-title {
   margin-right: 80px;
+}
+
+.seller-order-summary {
+  display: flex;
+  justify-content: center;
+  gap: 500px;
+  font-size: 24px;
+}
+
+.seller-order-summary-details {
+  border: 2px solid #c8963e;
+  background: white;
+  padding: 16px;
+  border-radius: 4px;
 }
