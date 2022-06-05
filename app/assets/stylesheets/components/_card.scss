@@ -112,11 +112,15 @@
   color: #FFF8F0;
 }
 
-  h5 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-  }
-  
+h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.data-card.sales-container {
+  background-color: #c8963e;
+}
+
 .vertical-scroll-container {
   height: 80vh;
   width: auto;
