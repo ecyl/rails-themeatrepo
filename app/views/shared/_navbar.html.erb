@@ -36,11 +36,6 @@
         </ul>
 
 
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
-
         <% if user_signed_in? %>
           <ul class="list-inline mt-3 ms-2">
             <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
@@ -57,7 +52,7 @@
     <%= link_to show_path, class: "navbar-brand" do %>
       <%= image_tag "meat-repo-logo-black.png" %>
     <% end %>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,19 +72,17 @@
           </li>
 
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
 
         <%# insert avatar %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
+        <div class="navbar-right d-flex align-items-center">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
 
-        <% if user_signed_in? %>
-          <ul class="list-inline mt-3 ms-2">
-            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
-          </ul>
-        <% end %>
+          <% if user_signed_in? %>
+            <ul class="list-inline mt-3 ms-2">
+              <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+            </ul>
+          <% end %>
+        </div>
       </div>
     </div>
   </nav>
@@ -101,7 +94,7 @@
       <%= link_to '/', class: "navbar-brand" do %>
         <%= image_tag "meat-repo-logo-black.png" %>
       <% end %>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -130,19 +123,15 @@
 
         </ul>
 
-
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark" type="submit">Search</button>
-        </form>
-
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-buyer-border", alt: "avatar" %>
+        <div class="navbar-right d-flex align-items-center">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
 
         <% if user_signed_in? %>
           <ul class="list-inline mt-3 ms-2">
             <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
           </ul>
         <% end %>
+        </div>
       </div>
     </div>
   </nav>

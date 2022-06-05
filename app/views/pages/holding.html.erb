@@ -1,0 +1,20 @@
+    <% @total_sales = 0 %>
+    <% @orders.each do |order| %>
+      <%# check if order is fulfilled %>
+      <% if order.order_status == "true" %>
+        <%# if order is fulfilled, sale is added into order %>
+        <% @total = order.quantity * order.product.price%>
+        <% @total_sales += @total %>
+      <% end %>
+      <% @total_sales %>
+    <% end %>
+
+     <% @total_order = 0 %>
+    <% @orders.each do |order| %>
+      <%# check if the order has been fulfilled %>
+      <% if order.order_status == "true" %>
+        <%# total order + 1 %>
+        <% @total_order += 1 %>
+      <% end %>
+      <% @total_order %>
+    <% end %>
