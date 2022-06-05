@@ -1,10 +1,10 @@
 <% if current_user.nil? %>
-  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <% @products = Product.all %>
     <% @butcheries = Butchery.all %>
     <div class="container-fluid">
       <%= link_to '/', class: "navbar-brand" do %>
-        <%= image_tag "meat-repo-logo-black.png" %>
+        <%= image_tag "meat-repo-logo.jpg" %>
       <% end %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -35,7 +35,6 @@
 
         </ul>
 
-
         <% if user_signed_in? %>
           <ul class="list-inline mt-3 ms-2">
             <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
@@ -47,11 +46,11 @@
 <% elsif current_user.role == 'seller' %>
   <% @butcheries = current_user.butcheries %>
 
-  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-    <%= link_to show_path, class: "navbar-brand" do %>
-      <%= image_tag "meat-repo-logo-black.png" %>
-    <% end %>
+      <%= link_to show_path, class: "navbar-brand" do %>
+        <%= image_tag "meat-repo-logo.jpg" %>
+      <% end %>
       <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
@@ -73,7 +72,7 @@
 
         </ul>
 
-        <%# insert avatar %>
+        <!-- insert avatar -->
         <div class="navbar-right d-flex align-items-center">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
 
@@ -87,12 +86,12 @@
     </div>
   </nav>
 <% else %>
-  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <% @products = Product.all %>
     <% @butcheries = Butchery.all %>
     <div class="container-fluid">
       <%= link_to '/', class: "navbar-brand" do %>
-        <%= image_tag "meat-repo-logo-black.png" %>
+        <%= image_tag "meat-repo-logo.jpg" %>
       <% end %>
       <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
