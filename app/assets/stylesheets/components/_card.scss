@@ -101,3 +101,25 @@
   position: relative;
   height: 300px;
 }
+
+.vertical-scroll-container {
+  height: 80vh;
+  width: auto;
+  overflow: scroll;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  height: 350px;
+  align-items: center;
+}
+
+.horizontal-scroll-item {
+  flex: 0 0 auto;
+}
+
+.butcheries-logo {
+  max-height: 350px;
+}
