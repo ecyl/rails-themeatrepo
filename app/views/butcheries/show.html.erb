@@ -59,5 +59,11 @@
     </div>
 
   <% end %>
+<% else %>
+  <div class="row">
+    <% @butchery.products.each do |product| %>
+      <%= render "card", product: product, product_name: product.name, exp_date: product.expiration_date, country: product.country, price: product.price %>
+    <% end %>
+  </div>
 
 <% end %>
