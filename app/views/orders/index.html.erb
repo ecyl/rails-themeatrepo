@@ -5,6 +5,7 @@
 <div class="order-summary">
   <div class="order-summary-header">
     <h1 class="order-summary-title">My Orders</h1>
+    <%= link_to "Continue Shopping", root_path, class: "back-link" %>
   </div>
   <%# Order Summary Table headers %>
   <table class="table">
@@ -17,6 +18,7 @@
         </tr>
       </thead>
 
+  <% @subtotal = 0 %>
       <tbody>
         <% @orders.each do |order| %>
         <tr class="order-summary-row">
@@ -28,10 +30,13 @@
               </div>
               <div>
                 <div class="product-name">
-                  <%= order.product.name %>
+                  <strong><%= order.product.country %> <%= order.product.name %></strong>
                 </div>
                 <div class="butchery-name">
-                  <%= order.product.butchery.name %>
+                  From: <%= order.product.butchery.name %>
+                </div>
+                <div class="product-expiration-date">
+                  Expiring on: <em><%= order.product.expiration_date %></em>
                 </div>
               </div>
              </div>
@@ -41,6 +46,7 @@
             <td class="order-quantity"><%= order.quantity %></td>
             <% @total = order.quantity * order.product.price %>
             <td class="order-product-total">$<%= @total.to_f.round(2) %></td>
+            <% @subtotal += @total %>
         </tr>
         <% end %>
       </tbody>
@@ -49,7 +55,7 @@
     <div class="order-footer">
       <div class="order-subtotal">
         <span class="order-subtotal-title">Subtotal</span>
-        <span class="order-subtotal-price">$ <%= @total %></span>
+        <span class="order-subtotal-price">$ <%= @subtotal.to_f.round(2) %></span>
       </div>
       <button class="btn-black" href="#">Checkout</button>
     </div>
