@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :country, :expiration_date)
+    params.require(:product).permit(:name, :price, :country, :expiration_date, :discount_percentage, :photo)
   end
 
   # discount logic
