@@ -37,7 +37,9 @@
     <!-- Table -->
     <div class="col-12 col-sm-6 mt-3">
       <h3>Your stores</h3>
+
       <div class="table-container mt-4">
+
         <table class="table table-hover" data-controller="row">
           <thead>
             <tr>
@@ -57,16 +59,16 @@
           <% else %>
             <tbody>
               <% @butcheries.each do |butchery| %>
-                <%= link_to butchery_path(butchery) do %>
-                  <tr data-action="click->row#sendToLink" data-butchery-id="<%butchery.id%>" >
-                    <td> <%= link_to butchery.name, butchery_path(butchery), class: "text-decoration-none text-muted"%></td>
-                    <td><%= butchery.address %></td>
-                    <td><%= butchery.phone_number %></td>
-                  </tr>
-                <% end %>
+
+                <tr data-row-target="row" data-action="click->row#sendToLink" data-butchery-id="<%= butchery.id %>" class="row-select">
+                  <td> <%= link_to butchery.name, butchery_path(butchery), class: "text-decoration-none text-black"%></td>
+                  <td><%= butchery.address %></td>
+                  <td><%= butchery.phone_number %></td>
+                </tr>
+
               <% end %>
 
-              <tr>
+              <tr data-action="click->row#sendToAdd" id="add-butchery">
                 <td colspan="3"><%= link_to '+ Add a new store', new_butchery_path, class: "text-decoration-none text-black"%></td>
               </tr>
             </tbody>
