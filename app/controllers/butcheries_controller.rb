@@ -16,6 +16,11 @@ class ButcheriesController < ApplicationController
 
   def show
     @products = @butchery.products
+
+    @markers = {
+      lat: @butchery.latitude,
+      lng: @butchery.longitude
+    }
   end
 
   def create
