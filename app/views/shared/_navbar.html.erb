@@ -28,16 +28,11 @@
               <% end %>
             </ul>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-
         </ul>
 
         <% if user_signed_in? %>
           <ul class="list-inline mt-3 ms-2">
-            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn-small-gold", :method => :delete %></li>
           </ul>
         <% end %>
       </div>
@@ -55,7 +50,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              My stores
+              MY STORES
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% @butcheries.each do |butchery| %>
@@ -67,21 +62,43 @@
           </li>
 
           <li class="nav-item dropdown">
-          <%= link_to "My Orders", orders_path, class: "nav-link dropdown-toggle", id: "navbarDropdown"%>
+            <%= link_to "MY ORDERS", orders_path, class: "nav-link"%>
           </li>
 
         </ul>
 
-        <!-- insert avatar -->
+        <!-- Seller Profile Dropdown -->
         <div class="navbar-right d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Seller Badge -->
+            <li class="d-flex justify-content-center align-items-center">
+              <span class="badge-gold pb-0"><i class="fas fa-crown"></i> Seller</span>
+            </li>
 
-          <% if user_signed_in? %>
-            <ul class="list-inline mt-3 ms-2">
-              <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
-            </ul>
-          <% end %>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
+                <span class="username-display"><%= current_user.name %></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <div class="dropdown-item-text">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <p><strong><%= current_user.name %></strong></p>
+                      <p><%= current_user.email %></p>
+                    </div>
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <% if user_signed_in? %>
+                  <li><%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", :method => :delete %></li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
         </div>
+
       </div>
     </div>
   </nav>
@@ -115,22 +132,37 @@
               <% end %>
             </ul>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-
         </ul>
 
+        <!-- Buyer Profile Dropdown -->
         <div class="navbar-right d-flex align-items-center">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <% if user_signed_in? %>
-          <ul class="list-inline mt-3 ms-2">
-            <li><%= link_to "Logout", destroy_user_session_path, class: "nav-item btn btn-dark ", :method => :delete %></li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar avatar-seller-border", alt: "avatar" %>
+                <span class="username-display"><%= current_user.name %></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <div class="dropdown-item-text">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <p><strong><%= current_user.name %></strong></p>
+                      <p><%= current_user.email %></p>
+                    </div>
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <% if user_signed_in? %>
+                  <li><%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", :method => :delete %></li>
+                <% end %>
+              </ul>
+            </li>
           </ul>
-        <% end %>
         </div>
+
       </div>
     </div>
   </nav>
