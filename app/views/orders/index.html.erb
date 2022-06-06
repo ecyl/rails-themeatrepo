@@ -53,11 +53,13 @@
     </table>
   <%# Order Summary Table footer %>
     <div class="order-footer">
-      <div class="order-subtotal">
+      <div class="order-subtotal mb-4">
         <span class="order-subtotal-title">Subtotal</span>
         <span class="order-subtotal-price">$ <%= @subtotal.to_f.round(2) %></span>
       </div>
+      <div>
         <%= link_to "Checkout", order_path(@orders), class: "btn-black" %>
+      </div>
     </div>
 </div>
 
