@@ -11,3 +11,15 @@
 .welcome-container {
   font-family: 'Poppins', sans-serif;
 }
+
+.row-select {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#add-butchery {
+  &:hover {
+    cursor: pointer;
+  }
+}
