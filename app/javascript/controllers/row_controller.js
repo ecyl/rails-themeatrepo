@@ -17,5 +17,6 @@ export default class extends Controller {
   sendToAdd(event) {
     const row = event.currentTarget;
     window.location.href = `butcheries/new`
+
   }
 }
