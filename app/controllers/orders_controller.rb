@@ -54,6 +54,17 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def update
+    @order = Order.find(params[:id])
+    # raise
+    @order.order_status = true
+    if @order.save
+      redirect_to orders_path(@order)
+    else
+      render :new
+    end
+  end
+
   private
 
   def find_product_id
@@ -66,5 +77,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:quantity)
+  end
+
+  def update_order_params
+    params.require(:order).permit(:id)
   end
 end
