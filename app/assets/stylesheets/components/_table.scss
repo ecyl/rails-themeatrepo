@@ -1,13 +1,19 @@
 .table-container {
-  // background-color: #1E1E24;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   font-family: 'Poppins', sans-serif;
   color: #FFF8F0;
   font-family: 'Poppins', sans-serif;
-
 }
 
-.welcome-container {
-  font-family: 'Poppins', sans-serif;
+.row-select {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#add-butchery {
+  &:hover {
+    cursor: pointer;
+  }
 }
