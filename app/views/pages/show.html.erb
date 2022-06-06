@@ -1,14 +1,46 @@
-<div class="container">
-  <div class="welcome-container" style="margin-top: 20px;">
-    <strong><h1>Hi <%= @user.name %></h1></strong>
-    <h2>Welcome Home</h2>
+<div class="container p-5 mt-1">
+  <!-- Welcome message -->
+  <div class="row mt-0 bg-white p-4">
+    <div class="seller-welcome-container">
+      <p class="fs-5">Hi <%= @user.name %>,</p>
+      <h1 class="fs-2">Welcome to your Sales Dashboard</h1>
+    </div>
   </div>
 
-  <div class="row mt-4 d-flex">
-    <div class="col-6">
+  <div class="row bg-white p-4">
+    <!-- Numerical Data -->
+    <div class="col-12 col-sm-6">
+      <div class="sales-container d-flex flex-column justify-content-center align-items-center">
+        <h2>Total sales</h2>
+        <p class="fs-3">$<%= @total_sales %></p>
+      </div>
+
+      <h3 class="mt-5">Your orders</h3>
+      <div class="data-container d-flex">
+        <div class="order-container data-card">
+          <h5>Pending</h5>
+          <p><%= @pending.length %></p>
+        </div>
+
+        <div class="completed-orders-container data-card">
+          <h5>Completed</h5>
+          <p><%= @completed.length %></p>
+        </div>
+
+        <div class="total-orders-received-container data-card">
+          <h5>Total</h5>
+          <p><%= @orders.length %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="col-12 col-sm-6 mt-3">
       <h3>Your stores</h3>
-      <div class="table-container">
-        <table class="table table-hover">
+
+      <div class="table-container mt-4">
+
+        <table class="table table-hover" data-controller="row">
           <thead>
             <tr>
               <th>Store</th>
@@ -20,23 +52,23 @@
           <% if @butcheries.length.zero? %>
             <tbody>
               <tr>
-                <td>You have no stores yet</td>
-                <td colspan="3"><%= link_to '+ Add a new store', new_butchery_path, class: "text-decoration-none text-black" %></td>
+                <td class="text-muted">You have no stores yet</td>
+                <td colspan="3"><%= link_to '+ Add a new store', new_butchery_path, class: "text-decoration-none text-muted" %></td>
               </tr>
             </tbody>
           <% else %>
             <tbody>
               <% @butcheries.each do |butchery| %>
-                <%= link_to butchery_path(butchery, class: "stretched-link") do %>
-                  <tr>
-                    <td> <%= link_to butchery.name, butchery_path(butchery), class: "text-decoration-none text-black"%></td>
-                    <td><%= butchery.address %></td>
-                    <td><%= butchery.phone_number %></td>
-                  </tr>
-                <% end %>
+
+                <tr data-row-target="row" data-action="click->row#sendToLink" data-butchery-id="<%= butchery.id %>" class="row-select">
+                  <td> <%= link_to butchery.name, butchery_path(butchery), class: "text-decoration-none text-black"%></td>
+                  <td><%= butchery.address %></td>
+                  <td><%= butchery.phone_number %></td>
+                </tr>
+
               <% end %>
 
-              <tr>
+              <tr data-action="click->row#sendToAdd" id="add-butchery">
                 <td colspan="3"><%= link_to '+ Add a new store', new_butchery_path, class: "text-decoration-none text-black"%></td>
               </tr>
             </tbody>
@@ -45,34 +77,5 @@
       </div>
     </div>
 
-    <div class="col-6">
-      <h3>Your orders</h3>
-      <div class="data-container d-flex">
-        <div class="order-container data-card">
-          <h5>Pending orders</h5>
-          <p><%= @pending.length %></p>
-        </div>
-
-        <div class="completed-orders-container data-card">
-          <h5>Completed orders</h5>
-          <p><%= @completed.length %></p>
-        </div>
-
-        <div class="total-orders-received-container data-card">
-          <h5>Total accumulated orders</h5>
-          <p><%= @orders.length %></p>
-        </div>
-
-      </div>
-    </div>
   </div>
-
-  <div class="row col-3">
-    <h3>Your sales</h3>
-    <div class="sales-container data-card">
-      <h3>Total sales so far</h3>
-      <p>$<%= @total_sales %></p>
-    </div>
-  </div>
-
 </div>
