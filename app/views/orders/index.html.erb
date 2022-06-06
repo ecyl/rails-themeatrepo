@@ -98,7 +98,7 @@
 
     <% @customers = User.where(role: "buyer") %>
       <tbody>
-      <%  @customers.each do |customer| %>
+      <% @customers.each do |customer| %>
 
       <% @orders.each do |order| %>
       <%# Return all customers who ordered the product %>
@@ -109,9 +109,9 @@
               <td><%= order.user.name %></td>
               <td><%= order.user.address %></td>
               <td><%= order.user.phone_number %></td>
-              <td>delivery date</td>
+              <td>12 June 2022</td>
               <form action="/orders">
-              <td class="align-center"><input type="checkbox" value="completed"></td>
+              <td class="align-center"><input type="submit" name="Delivered" value="true"></td>
               </form>
         </tr>
           <% end %>
