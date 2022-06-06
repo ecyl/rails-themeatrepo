@@ -16,12 +16,11 @@ class PagesController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+    @orders = Order.where(product: current_user.products)
     @butcheries = @user.butcheries
-    @products = @user.products
-    @orders = @user.orders
+
     @pending = @orders.where(order_status: false)
     @completed = @orders.where(order_status: true)
-    # Get total sales amount
     @total_sales = 0
     @completed.each do |complete|
       product_id = complete.product_id
