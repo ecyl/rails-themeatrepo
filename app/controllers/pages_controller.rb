@@ -21,7 +21,6 @@ class PagesController < ApplicationController
     @orders = @user.orders
     @pending = @orders.where(order_status: false)
     @completed = @orders.where(order_status: true)
-
     # Get total sales amount
     @total_sales = 0
     @completed.each do |complete|
