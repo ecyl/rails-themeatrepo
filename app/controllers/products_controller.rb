@@ -64,6 +64,10 @@ class ProductsController < ApplicationController
 
   def set_discounted_price
     @product = set_product
-    @discounted_price = (@product.price * (1 - (@product.discount_percentage / 100.00))).round(2) if on_discount?
+    if @product.discount_percentage.nil?
+      @discounted_price = (@product.price * (1 - (20 / 100.00))).round(2) if on_discount?
+    else
+      @discounted_price = (@product.price * (1 - (@product.discount_percentage / 100.00))).round(2) if on_discount?
+    end
   end
 end
