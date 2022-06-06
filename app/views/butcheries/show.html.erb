@@ -60,6 +60,16 @@
 
   <% end %>
 <% else %>
+  <% if @butchery.products.length.zero? %>
+    <div class="container mx-auto d-flex justify-content-between mt-5">
+      <div class="text-content text-center">
+        <h3 class="text-center">Oops, the shop has no product yet.</h3>
+      </div>
+    </div>
+
+    <% end %>
+
+
   <div class="container mx-auto p-0">
     <div class="row my-5">
       <% @butchery.products.each do |product| %>
